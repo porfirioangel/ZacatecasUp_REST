@@ -13,7 +13,7 @@
 git clone https://gitlab.com/zacatecasup/ZacatecasUp_REST.git
 ```
 
-**Actualizar dependencias**
+**Actualizar dependencias:**
 ```
 cd ZacatecasUp_REST
 composer update
