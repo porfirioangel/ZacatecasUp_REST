@@ -18,3 +18,13 @@ git clone https://gitlab.com/zacatecasup/ZacatecasUp_REST.git
 cd ZacatecasUp_REST
 composer update
 ```
+
+**Copiar el archivo .env.example y renombrarlo a .env**
+```
+cp .env.example .env
+```
+
+**Generar la llave para la aplicación**
+```
+php artisan key:generate
+```
