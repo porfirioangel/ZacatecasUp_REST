@@ -19,6 +19,16 @@ cd ZacatecasUp_REST
 composer update
 ```
 
+**Copiar el archivo .env.example y renombrarlo a .env**
+```
+cp .env.example .env
+```
+
+**Generar la llave para la aplicación**
+```
+php artisan key:generate
+```
+
 **Correr proyecto:**
 ```
 php artisan serve --host 0.0.0.0 --port 8000
