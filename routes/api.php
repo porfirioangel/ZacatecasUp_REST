@@ -14,3 +14,5 @@
 
 
 Route::post('login', 'UsuarioController@login');
+
+Route::post('registrar_usuario', 'UsuarioController@registrarUsuario');

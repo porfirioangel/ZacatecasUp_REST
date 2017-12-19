@@ -55,20 +55,20 @@ class Handler extends ExceptionHandler
             switch ($status) {
                 case '404':
                     return Utils::jsonResponse(404, [
-                        'error_message' => 'Ruta no encontrada'
+                        'error' => 'Ruta no encontrada'
                     ]);
                 case '405':
                     return Utils::jsonResponse(405, [
-                        'error_message' => 'Verbo http inválido'
+                        'error' => 'Verbo http inválido'
                     ]);
                 default:
                     return Utils::jsonResponse(400, [
-                        'error_message' => 'Error desconocido'
+                        'error' => 'Error desconocido'
                     ]);
             }
         } else {
             return Utils::jsonResponse(400, [
-                'error_message' => 'Error desconocido'
+                'error' => 'Error desconocido'
             ]);
         }
     }
