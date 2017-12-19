@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Http\Controllers\Utils;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -31,7 +32,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
      */
     public function report(Exception $exception)
@@ -42,12 +43,33 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if ($this->isHttpException($exception)) {
+            $status = $exception->getStatusCode();
+
+            switch ($status) {
+                case '404':
+                    return Utils::jsonResponse(404, [
+                        'error_message' => 'Ruta no encontrada'
+                    ]);
+                case '405':
+                    return Utils::jsonResponse(405, [
+                        'error_message' => 'Verbo http inválido'
+                    ]);
+                default:
+                    return Utils::jsonResponse(400, [
+                        'error_message' => 'Error desconocido'
+                    ]);
+            }
+        } else {
+            return Utils::jsonResponse(400, [
+                'error_message' => 'Error desconocido'
+            ]);
+        }
     }
 }

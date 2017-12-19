@@ -18,3 +18,8 @@ git clone https://gitlab.com/zacatecasup/ZacatecasUp_REST.git
 cd ZacatecasUp_REST
 composer update
 ```
+
+**Correr proyecto:**
+```
+php artisan serve --host 0.0.0.0 --port 8000
+```
