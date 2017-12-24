@@ -36,4 +36,7 @@ Route::delete('remover_propietario', 'NegocioController@removerPropietario');
 
 Route::post('lista_propietarios', 'NegocioController@listarPropietarios');
 
-
+/**
+*Calificaciones
+*/
+Route::resource('calificar_negocio','CalificacionNegocio\CalificarNegocioController');
