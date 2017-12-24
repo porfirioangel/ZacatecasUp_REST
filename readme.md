@@ -33,3 +33,14 @@ php artisan key:generate
 ```
 php artisan serve --host 0.0.0.0 --port 8000
 ```
+
+### Comandos básicos de Laravel
+**Crear modelo:**
+```
+php artisan make:model MiModelo
+```
+
+**Crear controlador:**
+```
+php artisan make:controller MiModeloController
+```

@@ -12,7 +12,28 @@
 */
 
 
-
 Route::post('login', 'UsuarioController@login');
 
 Route::post('registrar_usuario', 'UsuarioController@registrarUsuario');
+
+Route::post('registrar_categoria', 'CategoriaNegocioController@registrarCategoria');
+
+Route::delete('eliminar_categoria', 'CategoriaNegocioController@eliminarCategoria');
+
+Route::get('catalogo_negocios', 'NegocioController@getCatalogoNegocios');
+
+Route::post('registrar_negocio', 'NegocioController@registrarNegocio');
+
+Route::put('actualizar_negocio', 'NegocioController@actualizarNegocio');
+
+Route::delete('eliminar_negocio', 'NegocioController@eliminarNegocio');
+
+Route::put('actualizar_suscripcion', 'NegocioController@actualizarSuscripcion');
+
+Route::post('agregar_propietario', 'NegocioController@agregarPropietario');
+
+Route::delete('remover_propietario', 'NegocioController@removerPropietario');
+
+Route::post('lista_propietarios', 'NegocioController@listarPropietarios');
+
+
