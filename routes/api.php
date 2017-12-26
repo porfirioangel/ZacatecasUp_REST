@@ -39,4 +39,20 @@ Route::post('lista_propietarios', 'NegocioController@listarPropietarios');
 /**
 *Calificaciones
 */
-Route::resource('calificar_negocio','CalificacionNegocio\CalificarNegocioController');
+Route::resource('calificar_negocio','CalificacionNegocio\CalificarNegocioController', ['only' => ['store']]);
+/**
+*Comentario Negocios
+*/
+Route::resource('agregar_comentario','ComentarioNegocio\ComentarioNegocioController', ['only' => ['store']]);
+/**
+*Buscar recomendaciones
+*/
+Route::resource('buscar_recomendaciones','PalabraClave\PalabraClaveController', ['only' => ['store','index','show']]);
+/**
+*Detalles Negocio
+*/
+Route::get('detalles_negocio','NegocioController@detallesNegocio');
+/**
+*Obtener Categorias
+*/
+Route::get('obtener_categorias','CategoriaNegocioController@obtenerCategorias');
