@@ -45,4 +45,15 @@ class CategoriaNegocioController extends Controller
         return $categoriaEliminadaResponse;
 //        return Utils::categoriaInexistenteResponse();
     }
+
+    public function obtenerCategorias(Request $request)
+    {
+        $categoriasResponse = Utils::jsonResponse(200, ['Comida', 'Cafeterías',
+            'Bares', 'Clubs Nocturnos', 'Turismo', 'Servicios']);
+
+        $categoriasVaciasReponse = Utils::jsonResponse(200, []);
+
+        return $categoriasResponse;
+//        return $categoriasVaciasReponse;
+    }
 }

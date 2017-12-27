@@ -47,7 +47,7 @@ Route::resource('agregar_comentario','ComentarioNegocio\ComentarioNegocioControl
 /**
 *Buscar recomendaciones
 */
-Route::resource('buscar_recomendaciones','PalabraClave\PalabraClaveController', ['only' => ['store','index','show']]);
+Route::resource('buscar_recomendaciones','PalabraClave\PalabraClaveController', ['only' => ['index']]);
 /**
 *Detalles Negocio
 */

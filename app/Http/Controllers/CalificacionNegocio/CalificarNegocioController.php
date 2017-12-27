@@ -2,84 +2,38 @@
 
 namespace App\Http\Controllers\CalificacionNegocio;
 
+use App\Http\Controllers\Utils;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CalificarNegocioController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
-    }
+        $usuario_id = $request['usuario_id'];
+        $negocio_id = $request['negocio_id'];
+        $calificacion = $request['calificacion'];
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        if (!Utils::isRequiredParametersComplete([$usuario_id, $negocio_id,
+            $calificacion])) {
+            return Utils::parametrosIncompletosResponse(['usuario_id',
+                'negocio_id', 'calificacion']);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        // TODO Implementar la lógica de la petición
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $calificacionResponse = Utils::jsonResponse(200, [
+           'calificacion' => (rand(1, 5) + $calificacion) / 2
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $calificacionResponse;
+//        return Utils::usuarioInexistenteResponse();
+//        return Utils::negocioInexistenteResponse();
     }
 }
