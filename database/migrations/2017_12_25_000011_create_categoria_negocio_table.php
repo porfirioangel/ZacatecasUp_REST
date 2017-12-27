@@ -24,8 +24,8 @@ class CreateCategoriaNegocioTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('categoria', 45);
-            $table->string('ionicon', 45);
+            $table->string('categoria', 45)->unique();
+            $table->string('ionicon', 45)->nullable();;
 
             $table->unique(["categoria"], 'categoria_UNIQUE');
         });

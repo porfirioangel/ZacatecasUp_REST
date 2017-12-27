@@ -25,8 +25,8 @@ class CreateNegocioTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre', 100);
-            $table->decimal('latitud');
-            $table->decimal('longitud');
+            $table->decimal('latitud', 12, 8);
+            $table->decimal('longitud', 12, 8);
             $table->string('descripcion_breve', 200);
             $table->string('descripcion_completa');
             $table->string('url_logo');

@@ -218,14 +218,17 @@ class NegocioController extends Controller
 //        return Utils::jsonResponse(200, []);
 //        return Utils::negocioInexistenteResponse();
     }
-    public function detallesNegocio(Request $request){
-         $id_negocio = $request['id_negocio'];
-          if (!Utils::isRequiredParametersComplete([$id_negocio])) {
+
+    public function detallesNegocio(Request $request)
+    {
+        $id_negocio = $request['id_negocio'];
+        if (!Utils::isRequiredParametersComplete([$id_negocio])) {
             return Utils::parametrosIncompletosResponse(['id_negocio']);
         }
     }
-    public function obtenerCategorias(){
+
+    public function obtenerCategorias()
+    {
         //obtener categorias de los negocios -> ningun parametro
     }
 }
-kllp

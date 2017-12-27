@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\dueno_negocio;
-use App\comentario_negocio;
-use App\calificacion_negocio;
+use App\DuenoNegocio;
+use App\ComentarioNegocio;
+use App\CalificacionNegocio;
 use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
@@ -13,13 +13,13 @@ class Usuario extends Model
     public $timestamps = false;
     
     public function dueno(){
-    	return $this->hasMany(dueno_negocio::class);
+    	return $this->hasMany(DuenoNegocio::class);
     }
     public function calificacion(){
-    	return $this->hasMany(calificacion_negocio::class);
+    	return $this->hasMany(CalificacionNegocio::class);
     }
     public function comentario(){
-    	return $this->hasMany(comentario_negocio::class);
+    	return $this->hasMany(ComentarioNegocio::class);
     }
 
 }

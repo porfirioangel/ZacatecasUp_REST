@@ -27,7 +27,7 @@ class CreateComentarioNegocioTable extends Migration
             $table->integer('usuario_id')->unsigned();
             $table->integer('negocio_id')->unsigned();
             $table->string('comentario', 200);
-            $table->date('fecha');
+            $table->dateTime('fecha');
 
             $table->index(["negocio_id"], 'fk_comentario_negocio_negocio1_idx');
 

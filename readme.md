@@ -39,9 +39,9 @@ DB_PASSWORD=mypassword
 php artisan key:generate
 ```
 
-**Correr las migraciones:**
+**Correr las migraciones y seeders:**
 ```
-php artisan migrate:fresh
+php artisan migrate:fresh --seed
 ```
 
 **Correr proyecto:**
@@ -68,4 +68,17 @@ php artisan cache:clear
 **Crear migraciones:**
 ```
 php artisan make:migration my_migration_name
+```
+
+**Crear seeder:**
+```
+php artisan make:seeder MiSeederName
+```
+
+### Solución de errores
+
+**[ErrorException] include(/home/porfirio/PhpstormProjects/ZacatecasUp_REST): 
+failed to open stream: Success** 
+```
+composer dump-autoload
 ```
