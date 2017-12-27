@@ -25,7 +25,6 @@ class CreateCategoriaNegocioTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('categoria', 45)->unique();
-            $table->string('ionicon', 45)->nullable();;
 
             $table->unique(["categoria"], 'categoria_UNIQUE');
         });

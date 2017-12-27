@@ -1,5 +1,7 @@
 <?php
 
+use App\CategoriaNegocio;
+use App\Usuario;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PalabraClaveTableSeeder::class);
         $this->call(EtiquetaNegocioTableSeeder::class);
         $this->call(GaleriaNegocioTableSeeder::class);
+
+        factory(CategoriaNegocio::class, 100)->create();
     }
 }

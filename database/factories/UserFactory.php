@@ -6,7 +6,6 @@ use App\Suscripcion;
 use App\PalabraClave;
 use App\GaleriaNegocio;
 use App\EtiquetaNegocio;
-use App\TelefonoNegocio;
 use App\CategoriaNegocio;
 use Faker\Generator as Faker;
 
@@ -20,7 +19,8 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(usuario::class, function (Faker $faker) {
+
+$factory->define(Usuario::class, function (Faker $faker) {
     return [
         'negocio_id' => Negocio::all()->random()->id,
         'palabra_clave_id' => Negocio::all()->random()->id,
@@ -29,10 +29,10 @@ $factory->define(usuario::class, function (Faker $faker) {
 
 $factory->define(CategoriaNegocio::class, function (Faker $faker) {
     return [
-        'categoria' => $faker->word,
-        'ionicon' => $faker->word,
+        'categoria' => ucfirst($faker->word) . ' ' . $faker->word
     ];
 });
+
 $factory->define(Suscripcion::class, function (Faker $faker) {
     return [
         'tipo' => $faker->word,
@@ -40,37 +40,35 @@ $factory->define(Suscripcion::class, function (Faker $faker) {
         'fecha_fin' => $faker->date($format = 'Y-m-d', $max = 'now'),
     ];
 });
+
 $factory->define(Negocio::class, function (Faker $faker) {
     return [
         'nombre' => $faker->word,
         'latitud' => $faker->latitude($min = -90, $max = 90),
         'longitud' => $faker->longitude($min = -180, $max = 180),
-        'descripcion_breve' => $faker -> paragraph(1),
-        'descripcion_completa' => $faker -> paragraph(1),
-        'url_logo' => $faker ->url, 
-        'sitio_web' => $faker ->url, 
-        'facebook' => $faker ->url, 
+        'descripcion_breve' => $faker->paragraph(1),
+        'descripcion_completa' => $faker->paragraph(1),
+        'url_logo' => $faker->url,
+        'sitio_web' => $faker->url,
+        'facebook' => $faker->url,
         'categoria_negocio_id' => CategoriaNegocio::all()->random()->id,
         'suscripcion_id' => Suscripcion::all()->random()->id,
     ];
 });
+
 $factory->define(GaleriaNegocio::class, function (Faker $faker) {
     return [
         'url_foto' => $faker->url,
         'negocio_id' => Negocio::all()->random()->id,
     ];
 });
-$factory->define(TelefonoNegocio::class, function (Faker $faker) {
-    return [
-        'telefono' => $faker->tollFreePhoneNumber,
-        'negocio_id' => Negocio::all()->random()->id,
-    ];
-});
+
 $factory->define(PalabraClave::class, function (Faker $faker) {
-    return [        
-        'keyword' => $faker->word,        
+    return [
+        'keyword' => $faker->word,
     ];
 });
+
 $factory->define(EtiquetaNegocio::class, function (Faker $faker) {
     return [
         'negocio_id' => Negocio::all()->random()->id,
