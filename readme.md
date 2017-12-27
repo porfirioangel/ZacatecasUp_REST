@@ -24,9 +24,24 @@ composer update
 cp .env.example .env
 ```
 
+**Configurar la base de datos en el archivo .env:**
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mydatabase
+DB_USERNAME=myuser
+DB_PASSWORD=mypassword
+```
+
 **Generar la llave para la aplicación**
 ```
 php artisan key:generate
+```
+
+**Correr las migraciones:**
+```
+php artisan migrate:fresh
 ```
 
 **Correr proyecto:**
@@ -43,4 +58,14 @@ php artisan make:model MiModelo
 **Crear controlador:**
 ```
 php artisan make:controller MiModeloController
+```
+
+**Limpiar caché:**
+```
+php artisan cache:clear
+```
+
+**Crear migraciones:**
+```
+php artisan make:migration my_migration_name
 ```
