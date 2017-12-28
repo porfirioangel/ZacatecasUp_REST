@@ -209,7 +209,7 @@ class NegocioController extends Controller
                 'nombre' => 'Porfirio Ángel Díaz Sánchez'
             ],
             [
-                'id' => 1,
+                'id' => 2,
                 'nombre' => 'Porfirio Ángel Díaz Sánchez'
             ]
         ]);
@@ -222,13 +222,124 @@ class NegocioController extends Controller
     public function detallesNegocio(Request $request)
     {
         $id_negocio = $request['id_negocio'];
+
         if (!Utils::isRequiredParametersComplete([$id_negocio])) {
             return Utils::parametrosIncompletosResponse(['id_negocio']);
         }
-    }
 
-    public function obtenerCategorias()
-    {
-        //obtener categorias de los negocios -> ningun parametro
+        $detallesResponse = Utils::jsonResponse(200, [
+            'nombre' => 'Macdonnals',
+            'logotipo' => '/ZacatecasUp/logos/customer-service.png',
+            'categoria' => 'Comida',
+            'calificacion' => 3.8,
+            'sitio_web' => 'http://macdonnals.com',
+            'latitud' => 100.24232,
+            'longitud' => 100.43243,
+            'galeria' => [
+                '/ZacatecasUp/galeria/kfc_01.jpg',
+                '/ZacatecasUp/galeria/kfc_02.jpg',
+                '/ZacatecasUp/galeria/kfc_03.jpg'
+            ],
+            'descripcion_breve' => 'Un establecimiento muy cool',
+            'descripcion_completa' => [
+                'descripcion' => [
+                    'tipo' => 'texto',
+                    'titulo' => 'Descripción',
+                    'contenido' => 'McDonald\'s es una cadena de restaurantes de rápida. Sus principales productos son las hamburguesas, papas fritas, los menús para el desayuno, los refrescos, batidos, los helados, los postres y, recientemente, ensaladas de fruta y otros productos exclusivos para países.'
+                ],
+                'productos' => [
+                    'tipo' => 'lista',
+                    'titulo' => 'Productos',
+                    'contenido' => [
+                        'Hamburguesas',
+                        'Burritos',
+                        'Hot Dogs'
+                    ]
+                ],
+                'horario' => [
+                    'tipo' => 'lista',
+                    'titulo' => 'Horario',
+                    'contenido' => [
+                        'Lunes a viernes de 2:00 pm a 4:00 pm',
+                        'Sábados de 2:00 pm a 4:00 pm y de 6:00 pm a 2:00 am',
+                        'Domingos cerrado'
+                    ]
+                ],
+                'telefono' => [
+                    'tipo' => 'lista',
+                    'titulo' => 'Teléfono',
+                    'contenido' => [
+                        '4949428610',
+                        '4949428611',
+                        '4949428612'
+                    ]
+                ]
+            ],
+            'palabras_clave' => [
+                'comida',
+                'hamburguesas',
+                'chatarra'
+            ],
+            'comentarios' => [
+                [
+                    'fecha' => '12/09/2017',
+                    'autor' => 'Martin López Pereira',
+                    'comentario' => 'Un establecimiento muy higiénico',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_01.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_02.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_03.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_04.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                ],
+                [
+                    'fecha' => '11/09/2017',
+                    'autor' => 'Porfirio López Pereira',
+                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                ]
+            ]
+
+        ]);
+
+        return $detallesResponse;
+//        return Utils::negocioInexistenteResponse();
     }
 }
