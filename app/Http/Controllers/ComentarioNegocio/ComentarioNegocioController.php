@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\ComentarioNegocio;
 
-use App\Http\Controllers\Utils;
+use App\ComentarioNegocio;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Utils;
 use App\Http\Controllers\Controller;
 
 class ComentarioNegocioController extends Controller
@@ -16,6 +17,17 @@ class ComentarioNegocioController extends Controller
      */
     public function store(Request $request)
     {
+        $reglas = [
+            'usuario_id' => 'required',
+            'negocio_id' => 'required',
+            'comentario' => 'required' 
+        ];
+        $this->validate($request, $reglas);
+        $campos = $request->all();
+        $campos['fecha'] = date('Y-m-d h:i:s');
+        $comentario = ComentarioNegocio::create($campos);
+        return response()->json(['data' =>$comentario],201);
+        /*
         $usuario_id = $request['usuario_id'];
         $negocio_id = $request['negocio_id'];
         $comentario = $request['comentario'];
@@ -37,5 +49,6 @@ class ComentarioNegocioController extends Controller
         return $comentarioResponse;
 //        return Utils::usuarioInexistenteResponse();
 //        return Utils::negocioInexistenteResponse();
+*/
     }
 }
