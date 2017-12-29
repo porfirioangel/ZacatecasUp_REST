@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EtiquetaNegocioTableSeeder::class);
         $this->call(GaleriaNegocioTableSeeder::class);
 
-        factory(CategoriaNegocio::class, 100)->create();
+        //factory(CategoriaNegocio::class, 100)->create();
     }
 }
