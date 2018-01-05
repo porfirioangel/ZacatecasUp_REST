@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Negocio;
+use App\ComentarioNegocio;
 use Illuminate\Http\Request;
 use Monolog\Processor\UidProcessor;
 
@@ -346,7 +347,8 @@ class NegocioController extends Controller
     public function detallesNegocio(Request $request){
          $id_negocio = $request['id_negocio'];
          $negocio = Negocio::findOrFail($id_negocio);
-         return response()->json(['data' => $negocio],200);
+         $comentarios = ComentarioNegocio::findOrFail($id_negocio);
+         return response()->json(['data' => $negocio, 'comentarios' => $comentarios],200);
     }
 
 }
