@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CategoriaNegocio;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Utils;
 
 class CategoriaNegocioController extends Controller
 {
@@ -46,20 +47,17 @@ class CategoriaNegocioController extends Controller
         return $categoriaEliminadaResponse;
 //        return Utils::categoriaInexistenteResponse();
     }
-
-   /* public function obtenerCategorias(Request $request)
-    {
-        $categoriasResponse = Utils::jsonResponse(200, ['Comida', 'Cafeterías',
-            'Bares', 'Clubs Nocturnos', 'Turismo', 'Servicios']);
-
-        $categoriasVaciasReponse = Utils::jsonResponse(200, []);
-
-        return $categoriasResponse;
-//        return $categoriasVaciasReponse;
-    }*/
     public function obtenerCategorias(){
-        $categorias = CategoriaNegocio::all();
-        //introducimos dentro del elemento data las categorias
-        return response()->json(['data' => $categorias], 200); 
+        $categorias = CategoriaNegocio::all();   
+        $json_array  = json_decode($categorias, true);
+        $elementCount  = count($json_array);       
+        $arreglo;
+        foreach($json_array as $valor){
+            for($i=0; $i<=$elementCount-1; $i++){
+                $arreglo[$i] = $json_array[$i]['categoria'];
+            }
+        }           
+            return Utils::jsonResponse(200,[$arreglo]);    
+        
     }
 }

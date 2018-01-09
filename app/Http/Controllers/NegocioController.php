@@ -348,7 +348,7 @@ class NegocioController extends Controller
          $id_negocio = $request['id_negocio'];
          $negocio = Negocio::findOrFail($id_negocio);
          $comentarios = ComentarioNegocio::findOrFail($id_negocio);
-         return response()->json(['data' => $negocio, 'comentarios' => $comentarios],200);
+         return response()->json(['Negocio Correcto' => $negocio, 'comentarios' => $comentarios],200);
     }
 
 }
