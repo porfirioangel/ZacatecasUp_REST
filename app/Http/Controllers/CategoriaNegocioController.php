@@ -47,17 +47,19 @@ class CategoriaNegocioController extends Controller
         return $categoriaEliminadaResponse;
 //        return Utils::categoriaInexistenteResponse();
     }
-    public function obtenerCategorias(){
-        $categorias = CategoriaNegocio::all();   
-        $json_array  = json_decode($categorias, true);
-        $elementCount  = count($json_array);       
-        $arreglo;
-        foreach($json_array as $valor){
-            for($i=0; $i<=$elementCount-1; $i++){
+
+    public function obtenerCategorias()
+    {
+        $categorias = CategoriaNegocio::all();
+        $json_array = json_decode($categorias, true);
+        $elementCount = count($json_array);
+//        $arreglo;
+        foreach ($json_array as $valor) {
+            for ($i = 0; $i <= $elementCount - 1; $i++) {
                 $arreglo[$i] = $json_array[$i]['categoria'];
             }
-        }           
-            return Utils::jsonResponse(200,[$arreglo]);    
-        
+        }
+        return Utils::jsonResponse(200, $arreglo);
+
     }
 }

@@ -17,7 +17,10 @@ class UsuarioTableSeeder extends Seeder
             'email' => 'porfirioads@gmail.com',
             'password' => 'e516f979536994a14d9b0500bca3a1287b9ea9fe',
             'nombre' => 'Porfirio Ángel Díaz Sánchez',
+            'sexo' => 'H',
+            'fecha_nacimiento' => '1997-08-21',
             'tipo_usuario' => 'Administrador',
+
             'token' => null
         ]);
 
@@ -26,6 +29,8 @@ class UsuarioTableSeeder extends Seeder
             'email' => 'miguelads@gmail.com',
             'password' => 'e516f979536994a14d9b0500bca3a1287b9ea9fe',
             'nombre' => 'Miguél Alejandro Dolores Saucedo',
+            'sexo' => 'H',
+            'fecha_nacimiento' => '1996-07-20',
             'tipo_usuario' => 'UsuarioNormal',
             'token' => null
         ]);
@@ -35,6 +40,8 @@ class UsuarioTableSeeder extends Seeder
             'email' => 'haro@gmail.com',
             'password' => 'e516f979536994a14d9b0500bca3a1287b9ea9fe',
             'nombre' => 'Manuel Haro Pérez',
+            'sexo' => 'H',
+            'fecha_nacimiento' => '1995-06-19',
             'tipo_usuario' => 'DueñoNegocio',
             'token' => null
         ]);
@@ -44,6 +51,8 @@ class UsuarioTableSeeder extends Seeder
             'email' => 'daniel@gmail.com',
             'password' => 'e516f979536994a14d9b0500bca3a1287b9ea9fe',
             'nombre' => 'Daniel Morales Reyes',
+            'sexo' => 'H',
+            'fecha_nacimiento' => '1994-05-18',
             'tipo_usuario' => 'DueñoNegocio',
             'token' => null
         ]);

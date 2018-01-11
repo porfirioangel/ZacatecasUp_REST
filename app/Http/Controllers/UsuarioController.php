@@ -58,12 +58,14 @@ class UsuarioController extends Controller
         $email = $request['email'];
         $password = $request['password'];
         $nombre = $request['nombre'];
+        $sexo = $request['sexo'];
+        $fecha_nacimiento = $request['fecha_nacimiento'];
         $tipo_usuario = $request['tipo_usuario'];
 
         if (!Utils::isRequiredParametersComplete([$email, $password, $nombre,
-            $tipo_usuario])) {
+            $tipo_usuario, $sexo, $fecha_nacimiento])) {
             return Utils::parametrosIncompletosResponse(['email', 'password',
-                'nombre', 'tipo_usuario']);
+                'nombre', 'tipo_usuario', 'sexo', 'fecha_nacimiento']);
         }
 
         $usuario = Usuario::where('email', '=', $email)->first();
@@ -76,6 +78,8 @@ class UsuarioController extends Controller
         $usuario->email = $email;
         $usuario->password = sha1($password);
         $usuario->nombre = $nombre;
+        $usuario->sexo = $sexo;
+        $usuario->fecha_nacimiento = $fecha_nacimiento;
         $usuario->tipo_usuario = $tipo_usuario;
 
         try {

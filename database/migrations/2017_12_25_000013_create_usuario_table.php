@@ -27,11 +27,12 @@ class CreateUsuarioTable extends Migration
             $table->string('email', 100);
             $table->string('password', 40);
             $table->string('nombre', 100);
+            $table->char('sexo', 1);
+            $table->date('fecha_nacimiento');
             $table->string('tipo_usuario', 15);
             $table->string('token', 44)->nullable();
 
             $table->unique(["email"], 'email_UNIQUE');
-
             $table->unique(["token"], 'token_UNIQUE');
         });
     }
