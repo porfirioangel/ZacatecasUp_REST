@@ -10,7 +10,7 @@
 ## Instrucciones de instalación:
 **Clonar el proyecto:**
 ```
-git clone https://gitlab.com/zacatecasup/ZacatecasUp_REST.git
+git clone https://gitlab.com/ZacatecasUp_REST.git
 ```
 
 **Actualizar dependencias:**

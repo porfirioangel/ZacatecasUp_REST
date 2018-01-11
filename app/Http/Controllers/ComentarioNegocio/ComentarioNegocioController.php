@@ -20,35 +20,12 @@ class ComentarioNegocioController extends Controller
         $reglas = [
             'usuario_id' => 'required',
             'negocio_id' => 'required',
-            'comentario' => 'required' 
+            'comentario' => 'required'
         ];
         $this->validate($request, $reglas);
         $campos = $request->all();
         $campos['fecha'] = date('Y-m-d h:i:s');
         $comentario = ComentarioNegocio::create($campos);
         return response()->json(['data' =>$comentario],201);
-        /*
-        $usuario_id = $request['usuario_id'];
-        $negocio_id = $request['negocio_id'];
-        $comentario = $request['comentario'];
-
-        if (!Utils::isRequiredParametersComplete([$usuario_id, $negocio_id,
-            $comentario])) {
-            return Utils::parametrosIncompletosResponse(['usuario_id',
-                'negocio_id', 'comentario']);
-        }
-
-        // TODO Implementar la lógica de la petición
-
-        $comentarioResponse = Utils::jsonResponse(200, [
-            'fecha' => date('Y-m-d h:i:s a'),
-            'autor' => 'Porfirio Ángel Díaz Sánchez',
-            'comentario' => $comentario
-        ]);
-
-        return $comentarioResponse;
-//        return Utils::usuarioInexistenteResponse();
-//        return Utils::negocioInexistenteResponse();
-*/
     }
 }

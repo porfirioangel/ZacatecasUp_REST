@@ -27,7 +27,7 @@ class PalabraClaveController extends Controller
             [
                 'id_negocio' => 8,
                 'nombre' => 'Macdonnals',
-                'logotipo' => '/ZacatecasUp/logos/customer-service.png',
+                'logotipo' => '/logos/customer-service.png',
                 'calificacion' => 5,
                 'descripcion_breve' => 'Un establecimiento muy cool, podrás pasar momentos inolvidales en compañía de toda tu famila',
                 'latitud' => 22.7707508,
@@ -36,7 +36,7 @@ class PalabraClaveController extends Controller
             [
                 'id_negocio' => 9,
                 'nombre' => 'La Michoacana',
-                'logotipo' => '/ZacatecasUp/logos/money-bag.png',
+                'logotipo' => '/logos/money-bag.png',
                 'calificacion' => 4.6,
                 'descripcion_breve' => 'Un establecimiento muy sucio',
                 'latitud' => 22.7673258,
@@ -45,7 +45,7 @@ class PalabraClaveController extends Controller
             [
                 'id_negocio' => 9,
                 'nombre' => 'Starbucks',
-                'logotipo' => '/ZacatecasUp/logos/starbucks.png',
+                'logotipo' => '/logos/starbucks.png',
                 'calificacion' => 2.6,
                 'descripcion_breve' => 'Un establecimiento muy sucio',
                 'latitud' => 22.7673503,
@@ -54,7 +54,7 @@ class PalabraClaveController extends Controller
             [
                 'id_negocio' => 9,
                 'nombre' => 'KFC',
-                'logotipo' => '/ZacatecasUp/logos/kfc.png',
+                'logotipo' => '/logos/kfc.png',
                 'calificacion' => 3.6,
                 'descripcion_breve' => 'Un establecimiento muy sucio',
                 'latitud' => 22.7687222,

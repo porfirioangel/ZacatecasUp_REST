@@ -231,16 +231,16 @@ class NegocioController extends Controller
 
         $detallesResponse = Utils::jsonResponse(200, [
             'nombre' => 'Macdonnals',
-            'logotipo' => '/ZacatecasUp/logos/customer-service.png',
+            'logotipo' => '/logos/customer-service.png',
             'categoria' => 'Comida',
             'calificacion' => 3.8,
             'sitio_web' => 'http://macdonnals.com',
             'latitud' => 100.24232,
             'longitud' => 100.43243,
             'galeria' => [
-                '/ZacatecasUp/galeria/kfc_01.jpg',
-                '/ZacatecasUp/galeria/kfc_02.jpg',
-                '/ZacatecasUp/galeria/kfc_03.jpg'
+                '/galeria/kfc_01.jpg',
+                '/galeria/kfc_02.jpg',
+                '/galeria/kfc_03.jpg'
             ],
             'descripcion_breve' => 'Un establecimiento muy cool',
             'descripcion_completa' => [
@@ -287,55 +287,55 @@ class NegocioController extends Controller
                     'fecha' => '12/09/2017',
                     'autor' => 'Martin López Pereira',
                     'comentario' => 'Un establecimiento muy higiénico',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_01.jpg'
+                    'autor_foto' => '/usuarios/usuario_01.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_02.jpg'
+                    'autor_foto' => '/usuarios/usuario_02.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_03.jpg'
+                    'autor_foto' => '/usuarios/usuario_03.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_04.jpg'
+                    'autor_foto' => '/usuarios/usuario_04.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                    'autor_foto' => '/usuarios/usuario_05.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                    'autor_foto' => '/usuarios/usuario_05.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                    'autor_foto' => '/usuarios/usuario_05.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                    'autor_foto' => '/usuarios/usuario_05.jpg'
                 ],
                 [
                     'fecha' => '11/09/2017',
                     'autor' => 'Porfirio López Pereira',
                     'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/ZacatecasUp/usuarios/usuario_05.jpg'
+                    'autor_foto' => '/usuarios/usuario_05.jpg'
                 ]
             ]
 

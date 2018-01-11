@@ -16,14 +16,14 @@ class CalificarNegocioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario_id = $request['usuario_id'];
-        $negocio_id = $request['negocio_id'];
+        $usuario_id = $request['id_usuario'];
+        $negocio_id = $request['id_negocio'];
         $calificacion = $request['calificacion'];
 
         if (!Utils::isRequiredParametersComplete([$usuario_id, $negocio_id,
             $calificacion])) {
-            return Utils::parametrosIncompletosResponse(['usuario_id',
-                'negocio_id', 'calificacion']);
+            return Utils::parametrosIncompletosResponse(['id_usuario',
+                'id_negocio', 'calificacion']);
         }
 
         // TODO Implementar la lógica de la petición
