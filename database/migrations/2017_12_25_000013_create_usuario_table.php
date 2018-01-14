@@ -31,6 +31,8 @@ class CreateUsuarioTable extends Migration
             $table->date('fecha_nacimiento');
             $table->string('tipo_usuario', 15);
             $table->string('token', 44)->nullable();
+            $table->string('profile_photo', 53)->nullable();
+
 
             $table->unique(["email"], 'email_UNIQUE');
             $table->unique(["token"], 'token_UNIQUE');

@@ -84,6 +84,9 @@ class UsuarioController extends Controller
 
         try {
             $usuario->save();
+            $usuario->profile_photo = '/uploads/' . sha1('usuario' .
+                    $usuario->id);
+            $usuario->save();
         } catch (Exception $e) {
             return Utils::jsonResponse(400, [
                 'error' => $e->getMessage()
@@ -91,7 +94,14 @@ class UsuarioController extends Controller
         }
 
         return Utils::jsonResponse(200, [
-            'ok' => true
+            'ok' => true,
+            'profile_photo' => $usuario->profile_photo
         ]);
+    }
+
+    public function uploadPhoto(Request $request) {
+        Logger::putLog('fdsfds');
+//        $name = $request['file']->getClientOriginalName();
+//        Logger::putLog($name);
     }
 }
