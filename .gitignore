@@ -5,6 +5,7 @@
 /public/galeria
 /public/logos
 /public/usuarios
+/public/uploads
 /storage/*.key
 /vendor
 /.idea
