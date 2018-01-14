@@ -26,7 +26,7 @@ class ComentarioNegocioController extends Controller
 
         $this->validate($request, $reglas);
         $campos = $request->all();
-        $campos['fecha'] = date('Y-m-d h:i');
+        $campos['fecha'] = date('d/m/Y h:i a');
 //        $comentario = ComentarioNegocio::create($campos);
 
         $usuario = Usuario::find($campos['usuario_id']);
