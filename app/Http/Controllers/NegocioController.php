@@ -221,7 +221,7 @@ class NegocioController extends Controller
 //        return Utils::negocioInexistenteResponse();
     }
 
-   /* public function detallesNegocio(Request $request)
+    public function detallesNegocio(Request $request)
     {
         $id_negocio = $request['id_negocio'];
 
@@ -343,12 +343,12 @@ class NegocioController extends Controller
 
         return $detallesResponse;
 //        return Utils::negocioInexistenteResponse();
-    }*/
-    public function detallesNegocio(Request $request){
-         $id_negocio = $request['id_negocio'];
-         $negocio = Negocio::findOrFail($id_negocio);
-         $comentarios = ComentarioNegocio::findOrFail($id_negocio);
-         return response()->json(['Negocio Correcto' => $negocio, 'comentarios' => $comentarios],200);
     }
+//    public function detallesNegocio(Request $request){
+//         $id_negocio = $request['id_negocio'];
+//         $negocio = Negocio::findOrFail($id_negocio);
+//         $comentarios = ComentarioNegocio::findOrFail($id_negocio);
+//         return response()->json(['Negocio Correcto' => $negocio, 'comentarios' => $comentarios],200);
+//    }
 
 }
