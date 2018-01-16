@@ -60,6 +60,7 @@ class NegocioController extends Controller
         }
 
         // TODO Implementar la lógica de la petición
+        // Nombre logo '/uploads/' . sha1('logo_negocio' . $negocio->id)
 
         $negocioRegistradoResponse = Utils::jsonResponse(200, [
             'id' => 3,

@@ -98,10 +98,4 @@ class UsuarioController extends Controller
             'profile_photo' => $usuario->profile_photo
         ]);
     }
-
-    public function uploadPhoto(Request $request) {
-        Logger::putLog('fdsfds');
-//        $name = $request['file']->getClientOriginalName();
-//        Logger::putLog($name);
-    }
 }

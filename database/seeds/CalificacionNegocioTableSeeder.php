@@ -15,7 +15,7 @@ class CalificacionNegocioTableSeeder extends Seeder
         Calificacionnegocio::create([
             'usuario_id' => 1,
             'negocio_id' => 1,
-            'calificacion' => 5
+            'calificacion' => 3
         ]);
 
         Calificacionnegocio::create([
