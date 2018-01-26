@@ -10,12 +10,13 @@ class CategoriaNegocio extends Model
     protected $table = 'categoria_negocio';
     public $timestamps = false;
 
-	protected $fillable=[
-		'categoria',
-	];
+    protected $fillable = [
+        'categoria',
+    ];
 
-	public function negocios(){
-		return $this -> hasMany(Negocio::class);
-	}
- 
+    public function negocios()
+    {
+        return $this->hasMany(Negocio::class);
+    }
+
 }

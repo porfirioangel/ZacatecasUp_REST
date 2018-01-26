@@ -9,6 +9,10 @@ use Monolog\Processor\UidProcessor;
 
 class NegocioController extends Controller
 {
+    /**
+     * Obtiene el catálogo de los negocios dados de alta con la finalidad de
+     * administrarlos
+     */
     public function getCatalogoNegocios(Request $request)
     {
         // TODO Implementar la lógica de la petición
@@ -36,6 +40,9 @@ class NegocioController extends Controller
 //        return $negociosInexistentesReponse;
     }
 
+    /**
+     * Registra un nuevo negocio
+     */
     public function registrarNegocio(Request $request)
     {
         // Parámetros obligatorios
@@ -74,6 +81,9 @@ class NegocioController extends Controller
 //        return Utils::categoriaInexistenteResponse();
     }
 
+    /**
+     * Actualiza un negocio existente
+     */
     public function actualizarNegocio(Request $request)
     {
         // Parámetros obligatorios
@@ -109,6 +119,9 @@ class NegocioController extends Controller
 //        return Utils::negocioInexistenteResponse();
     }
 
+    /**
+     * Elimina un negocio existente
+     */
     public function eliminarNegocio(Request $request)
     {
         $id = $request['id'];
@@ -127,101 +140,9 @@ class NegocioController extends Controller
 //        return Utils::negocioInexistenteResponse();
     }
 
-    public function actualizarSuscripcion(Request $request)
-    {
-        $id_negocio = $request['id_negocio'];
-        $fecha_fin = $request['fecha_fin'];
-        $tipo = $request['tipo'];
-
-        if (!Utils::isRequiredParametersComplete([$id_negocio, $fecha_fin,
-            $tipo])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio',
-                'fecha_fin', 'tipo']);
-        }
-
-        // TODO Implementar la lógica de la petición
-
-        $suscripcionActualizadaResponse = Utils::jsonResponse(200, [
-            'id_negocio' => $id_negocio,
-            'fecha_fin' => $fecha_fin,
-            'tipo' => $tipo
-        ]);
-
-//        return $suscripcionActualizadaResponse;
-        return Utils::negocioInexistenteResponse();
-    }
-
-    public function agregarPropietario(Request $request)
-    {
-        $id_negocio = $request['id_negocio'];
-        $id_usuario = $request['id_usuario'];
-
-        if (!Utils::isRequiredParametersComplete([$id_negocio, $id_usuario])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio',
-                'id_usuario']);
-        }
-
-        // TODO Implementar la lógica de la petición
-
-        $duenoAgregadoResponse = Utils::jsonResponse(200, [
-            'id_asignacion' => 1,
-            'id_negocio' => $id_negocio,
-            'id_usuario' => $id_usuario,
-            'nombre_usuario' => 'Porfirio Ángel Díaz Sánchez',
-        ]);
-
-        return $duenoAgregadoResponse;
-//        return Utils::negocioInexistenteResponse();
-//        return Utils::usuarioInexistenteResponse();
-    }
-
-    public function removerPropietario(Request $request)
-    {
-        $id_negocio = $request['id_negocio'];
-        $id_usuario = $request['id_usuario'];
-
-        if (!Utils::isRequiredParametersComplete([$id_negocio, $id_usuario])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio',
-                'id_usuario']);
-        }
-
-        // TODO Implementar la lógica de la petición
-
-        $duenoRemovidoReponse = Utils::jsonResponse(200, [
-            'id_asignacion' => 1
-        ]);
-
-        return $duenoRemovidoReponse;
-//        return Utils::negocioInexistenteResponse();
-//        return Utils::usuarioInexistenteResponse();
-    }
-
-    public function listarPropietarios(Request $request)
-    {
-        $id_negocio = $request['id_negocio'];
-
-        if (!Utils::isRequiredParametersComplete([$id_negocio])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio']);
-        }
-
-        // TODO Implementar la lógica de la petición
-
-        $propietariosResponse = Utils::jsonResponse(200, [
-            [
-                'id' => 1,
-                'nombre' => 'Porfirio Ángel Díaz Sánchez'
-            ],
-            [
-                'id' => 2,
-                'nombre' => 'Porfirio Ángel Díaz Sánchez'
-            ]
-        ]);
-
-        return $propietariosResponse;
-//        return Utils::jsonResponse(200, []);
-//        return Utils::negocioInexistenteResponse();
-    }
-
+    /**
+     * Obtiene los detalles de un negocio
+     */
     public function detallesNegocio(Request $request)
     {
         $id_negocio = $request['id_negocio'];
@@ -345,11 +266,5 @@ class NegocioController extends Controller
         return $detallesResponse;
 //        return Utils::negocioInexistenteResponse();
     }
-//    public function detallesNegocio(Request $request){
-//         $id_negocio = $request['id_negocio'];
-//         $negocio = Negocio::findOrFail($id_negocio);
-//         $comentarios = ComentarioNegocio::findOrFail($id_negocio);
-//         return response()->json(['Negocio Correcto' => $negocio, 'comentarios' => $comentarios],200);
-//    }
 
 }

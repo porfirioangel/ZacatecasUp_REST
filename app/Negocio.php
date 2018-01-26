@@ -30,9 +30,6 @@ class Negocio extends Model
         'suscripcion_id',
     ];
 
-    /*
-    ** Relaciones con otros modelos
-    */
     public function duenos()
     {
         return $this->hasMany(DuenoNegocio::class);
@@ -56,11 +53,6 @@ class Negocio extends Model
     public function categoria()
     {
         return $this->belongsTo(CategoriaNegocio::class);
-    }
-
-    public function telefonos()
-    {
-        return $this->hasMany(TelefonoNegocio::class);
     }
 
     public function suscripcion()

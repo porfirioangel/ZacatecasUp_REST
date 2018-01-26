@@ -6,15 +6,9 @@ use App\Http\Controllers\Utils;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CalificarNegocioController extends Controller
+class CalificacionNegocioController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function calificarNegocio(Request $request)
     {
         $usuario_id = $request['id_usuario'];
         $negocio_id = $request['id_negocio'];
@@ -29,7 +23,7 @@ class CalificarNegocioController extends Controller
         // TODO Implementar la lógica de la petición
 
         $calificacionResponse = Utils::jsonResponse(200, [
-           'calificacion' => (rand(1, 5) + $calificacion) / 2
+            'calificacion' => (rand(1, 5) + $calificacion) / 2
         ]);
 
         return $calificacionResponse;
