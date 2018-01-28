@@ -6,6 +6,7 @@ use App\Negocio;
 use App\ComentarioNegocio;
 use Illuminate\Http\Request;
 use Monolog\Processor\UidProcessor;
+use Validator;
 
 class NegocioController extends Controller
 {
@@ -17,7 +18,7 @@ class NegocioController extends Controller
     {
         // TODO Implementar la lógica de la petición
 
-        $negociosExistentesResponse = Utils::jsonResponse(200, [
+        $negociosExistentesResponse = ResponseUtils::jsonResponse(200, [
             [
                 'id' => 1,
                 'nombre' => 'Macdonnals',
@@ -34,7 +35,7 @@ class NegocioController extends Controller
             ]
         ]);
 
-        $negociosInexistentesReponse = Utils::jsonResponse(200, []);
+        $negociosInexistentesReponse = ResponseUtils::jsonResponse(200, []);
 
         return $negociosExistentesResponse;
 //        return $negociosInexistentesReponse;
@@ -58,10 +59,10 @@ class NegocioController extends Controller
         $sitio_web = $request['sitio_web'];
         $facebook = $request['facebook'];
 
-        if (!Utils::isRequiredParametersComplete([$nombre, $latitud,
+        if (!ResponseUtils::isRequiredParametersComplete([$nombre, $latitud,
             $longitud, $descripcion_breve, $descripcion_completa,
             $categoria_negocio_id, $palabras_clave])) {
-            return Utils::parametrosIncompletosResponse(['nombre', 'latitud',
+            return ResponseUtils::parametrosIncompletosResponse(['nombre', 'latitud',
                 'longitud', 'descripcion_breve', 'descripcion_completa',
                 'categoria_negocio_id', 'palabras_clave']);
         }
@@ -69,7 +70,7 @@ class NegocioController extends Controller
         // TODO Implementar la lógica de la petición
         // Nombre logo '/uploads/' . sha1('logo_negocio' . $negocio->id)
 
-        $negocioRegistradoResponse = Utils::jsonResponse(200, [
+        $negocioRegistradoResponse = ResponseUtils::jsonResponse(200, [
             'id' => 3,
             'nombre' => 'Tacos la parrilla',
             'url_logo' => 'logos/logo_3.png',
@@ -78,7 +79,7 @@ class NegocioController extends Controller
         ]);
 
         return $negocioRegistradoResponse;
-//        return Utils::categoriaInexistenteResponse();
+//        return ResponseUtils::categoriaInexistenteResponse();
     }
 
     /**
@@ -100,13 +101,13 @@ class NegocioController extends Controller
         $categoria_negocio_id = $request['categoria_negocio_id'];
         $palabras_clave = $request['palabras_clave'];
 
-        if (!Utils::isRequiredParametersComplete([$id])) {
-            return Utils::parametrosIncompletosResponse(['id']);
+        if (!ResponseUtils::isRequiredParametersComplete([$id])) {
+            return ResponseUtils::parametrosIncompletosResponse(['id']);
         }
 
         // TODO Implementar la lógica de la petición
 
-        $negocioActualizadoResponse = Utils::jsonResponse(200, [
+        $negocioActualizadoResponse = ResponseUtils::jsonResponse(200, [
             'id' => $id,
             'nombre' => 'Tacos la parrilla',
             'url_logo' => 'logos/logo_3.png',
@@ -115,8 +116,8 @@ class NegocioController extends Controller
         ]);
 
         return $negocioActualizadoResponse;
-//        return Utils::categoriaInexistenteResponse();
-//        return Utils::negocioInexistenteResponse();
+//        return ResponseUtils::categoriaInexistenteResponse();
+//        return ResponseUtils::negocioInexistenteResponse();
     }
 
     /**
@@ -126,18 +127,18 @@ class NegocioController extends Controller
     {
         $id = $request['id'];
 
-        if (!Utils::isRequiredParametersComplete([$id])) {
-            return Utils::parametrosIncompletosResponse(['id']);
+        if (!ResponseUtils::isRequiredParametersComplete([$id])) {
+            return ResponseUtils::parametrosIncompletosResponse(['id']);
         }
 
         // TODO Implementar la lógica de la petición
 
-        $negocioEliminadoResponse = Utils::jsonResponse(200, [
+        $negocioEliminadoResponse = ResponseUtils::jsonResponse(200, [
             'id' => $id
         ]);
 
         return $negocioEliminadoResponse;
-//        return Utils::negocioInexistenteResponse();
+//        return ResponseUtils::negocioInexistenteResponse();
     }
 
     /**
@@ -145,13 +146,25 @@ class NegocioController extends Controller
      */
     public function detallesNegocio(Request $request)
     {
-        $id_negocio = $request['id_negocio'];
+        $validator = Validator::make($request->all(), [
+            'id_negocio' => 'required|numeric',
+        ]);
 
-        if (!Utils::isRequiredParametersComplete([$id_negocio])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio']);
+        if ($validator->passes()) {
+
+        } else {
+            return ResponseUtils::jsonResponse(400, [
+                'error' => $validator->errors()->all()
+            ]);
         }
 
-        $detallesResponse = Utils::jsonResponse(200, [
+        $id_negocio = $request['id_negocio'];
+
+        if (!ResponseUtils::isRequiredParametersComplete([$id_negocio])) {
+            return ResponseUtils::parametrosIncompletosResponse(['id_negocio']);
+        }
+
+        $detallesResponse = ResponseUtils::jsonResponse(200, [
             'nombre' => 'Macdonnals',
             'logotipo' => '/logos/customer-service.png',
             'categoria' => 'Comida',
@@ -264,7 +277,7 @@ class NegocioController extends Controller
         ]);
 
         return $detallesResponse;
-//        return Utils::negocioInexistenteResponse();
+//        return ResponseUtils::negocioInexistenteResponse();
     }
 
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\ComentarioNegocio;
 
 use App\Usuario;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Utils;
+use App\Http\Controllers\ResponseUtils;
 use App\Http\Controllers\Controller;
 
 class ComentarioNegocioController extends Controller
@@ -23,14 +23,14 @@ class ComentarioNegocioController extends Controller
 
         $usuario = Usuario::find($campos['usuario_id']);
 
-        return Utils::jsonResponse(200, [
+        return ResponseUtils::jsonResponse(200, [
             'fecha' => $campos['fecha'],
             'autor' => $usuario->nombre,
             'comentario' => $campos['comentario'],
             'autor_foto' => $usuario->profile_photo
         ]);
 
-//        return Utils::jsonResponse(200, [
+//        return ResponseUtils::jsonResponse(200, [
 //            'fecha' => $comentario->fecha,
 //            'autor' => $usuario->nombre,
 //            'comentario' => $comentario->comentario,

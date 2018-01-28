@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Http\Controllers\Utils;
+use App\Http\Controllers\ResponseUtils;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -54,20 +54,20 @@ class Handler extends ExceptionHandler
 
             switch ($status) {
                 case '404':
-                    return Utils::jsonResponse(404, [
+                    return ResponseUtils::jsonResponse(404, [
                         'error' => 'Ruta no encontrada'
                     ]);
                 case '405':
-                    return Utils::jsonResponse(405, [
+                    return ResponseUtils::jsonResponse(405, [
                         'error' => 'Verbo http inválido'
                     ]);
                 default:
-                    return Utils::jsonResponse(400, [
+                    return ResponseUtils::jsonResponse(400, [
                         'error' => 'Error desconocido'
                     ]);
             }
         } else {
-            return Utils::jsonResponse(400, [
+            return ResponseUtils::jsonResponse(400, [
                 'error' => $exception->getMessage()
             ]);
         }

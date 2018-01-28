@@ -52,15 +52,15 @@ ORDER BY tipo_suscripcion DESC, coincidencias DESC, calificacion DESC;
     {
         $searchQuery = $request['palabras_clave'];
 
-        if (!Utils::isRequiredParametersComplete([$searchQuery])) {
-            return Utils::parametrosIncompletosResponse(['palabras_clave']);
+        if (!ResponseUtils::isRequiredParametersComplete([$searchQuery])) {
+            return ResponseUtils::parametrosIncompletosResponse(['palabras_clave']);
         }
 
         $tokens = $this->getSearchQueryTokens($searchQuery);
 
         $negocios = DB::select(DB::raw($this->getRecomendacionesSql($tokens)));
 
-        return Utils::jsonResponse(200, $negocios);
+        return ResponseUtils::jsonResponse(200, $negocios);
     }
 
 

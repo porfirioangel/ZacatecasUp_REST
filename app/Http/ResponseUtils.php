@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-class Utils
+class ResponseUtils
 {
     public static function isRequiredParametersComplete($parameters)
     {
@@ -39,19 +39,19 @@ class Utils
     }
 
     public static function categoriaInexistenteResponse() {
-        return Utils::jsonResponse(400, [
+        return ResponseUtils::jsonResponse(400, [
             'error' => 'La categoría no existe'
         ]);
     }
 
     public static function negocioInexistenteResponse() {
-        return Utils::jsonResponse(400, [
+        return ResponseUtils::jsonResponse(400, [
             'error' => 'El negocio no existe'
         ]);
     }
 
     public static function usuarioInexistenteResponse() {
-        return Utils::jsonResponse(400, [
+        return ResponseUtils::jsonResponse(400, [
             'error' => 'El usuario no existe'
         ]);
     }

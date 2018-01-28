@@ -9,14 +9,14 @@ class UsuarioController extends Controller
 {
     public function loginIncorrectoResponse()
     {
-        return Utils::jsonResponse(400, [
+        return ResponseUtils::jsonResponse(400, [
             'error' => 'Email o password incorrectos'
         ]);
     }
 
     public function emailExistenteReponse()
     {
-        return Utils::jsonResponse(400, [
+        return ResponseUtils::jsonResponse(400, [
             'error' => 'Usuario existente'
         ]);
     }
@@ -26,8 +26,8 @@ class UsuarioController extends Controller
         $email = $request['email'];
         $password = $request['password'];
 
-        if (!Utils::isRequiredParametersComplete([$email, $password])) {
-            return Utils::parametrosIncompletosResponse(['email', 'password']);
+        if (!ResponseUtils::isRequiredParametersComplete([$email, $password])) {
+            return ResponseUtils::parametrosIncompletosResponse(['email', 'password']);
         }
 
         $usuario = Usuario::where('email', '=', $email)->first();
@@ -41,12 +41,12 @@ class UsuarioController extends Controller
         try {
             $usuario->save();
         } catch (Exception $e) {
-            return Utils::jsonResponse(400, [
+            return ResponseUtils::jsonResponse(400, [
                 'error' => $e->getMessage()
             ]);
         }
 
-        return Utils::jsonResponse(200, [
+        return ResponseUtils::jsonResponse(200, [
             'id_usuario' => $usuario->id,
             'tipo_usuario' => $usuario->tipo_usuario,
             'token' => $usuario->token
@@ -62,9 +62,9 @@ class UsuarioController extends Controller
         $fecha_nacimiento = $request['fecha_nacimiento'];
         $tipo_usuario = $request['tipo_usuario'];
 
-        if (!Utils::isRequiredParametersComplete([$email, $password, $nombre,
+        if (!ResponseUtils::isRequiredParametersComplete([$email, $password, $nombre,
             $tipo_usuario, $sexo, $fecha_nacimiento])) {
-            return Utils::parametrosIncompletosResponse(['email', 'password',
+            return ResponseUtils::parametrosIncompletosResponse(['email', 'password',
                 'nombre', 'tipo_usuario', 'sexo', 'fecha_nacimiento']);
         }
 
@@ -88,12 +88,12 @@ class UsuarioController extends Controller
                     $usuario->id);
             $usuario->save();
         } catch (Exception $e) {
-            return Utils::jsonResponse(400, [
+            return ResponseUtils::jsonResponse(400, [
                 'error' => $e->getMessage()
             ]);
         }
 
-        return Utils::jsonResponse(200, [
+        return ResponseUtils::jsonResponse(200, [
             'ok' => true,
             'profile_photo' => $usuario->profile_photo
         ]);

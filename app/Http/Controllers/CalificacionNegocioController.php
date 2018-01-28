@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\CalificacionNegocio;
 
-use App\Http\Controllers\Utils;
+use App\Http\Controllers\ResponseUtils;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,20 +14,20 @@ class CalificacionNegocioController extends Controller
         $negocio_id = $request['id_negocio'];
         $calificacion = $request['calificacion'];
 
-        if (!Utils::isRequiredParametersComplete([$usuario_id, $negocio_id,
+        if (!ResponseUtils::isRequiredParametersComplete([$usuario_id, $negocio_id,
             $calificacion])) {
-            return Utils::parametrosIncompletosResponse(['id_usuario',
+            return ResponseUtils::parametrosIncompletosResponse(['id_usuario',
                 'id_negocio', 'calificacion']);
         }
 
         // TODO Implementar la lógica de la petición
 
-        $calificacionResponse = Utils::jsonResponse(200, [
+        $calificacionResponse = ResponseUtils::jsonResponse(200, [
             'calificacion' => (rand(1, 5) + $calificacion) / 2
         ]);
 
         return $calificacionResponse;
-//        return Utils::usuarioInexistenteResponse();
-//        return Utils::negocioInexistenteResponse();
+//        return ResponseUtils::usuarioInexistenteResponse();
+//        return ResponseUtils::negocioInexistenteResponse();
     }
 }

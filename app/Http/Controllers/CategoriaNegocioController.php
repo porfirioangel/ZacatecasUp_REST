@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CategoriaNegocio;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Utils;
+use App\Http\Controllers\ResponseUtils;
 
 class CategoriaNegocioController extends Controller
 {
@@ -12,17 +12,17 @@ class CategoriaNegocioController extends Controller
     {
         $categoria = $request['categoria'];
 
-        if (!Utils::isRequiredParametersComplete([$categoria])) {
-            return Utils::parametrosIncompletosResponse(['categoria']);
+        if (!ResponseUtils::isRequiredParametersComplete([$categoria])) {
+            return ResponseUtils::parametrosIncompletosResponse(['categoria']);
         }
 
         // TODO Implementar la lógica de la petición
 
-        $categoriaCreadaResponse = Utils::jsonResponse(200, [
+        $categoriaCreadaResponse = ResponseUtils::jsonResponse(200, [
             'categoria' => $categoria
         ]);
 
-        $categoriaExistenteResponse = Utils::jsonResponse(400, [
+        $categoriaExistenteResponse = ResponseUtils::jsonResponse(400, [
             'error' => 'La categoría ya existe'
         ]);
 
@@ -34,18 +34,18 @@ class CategoriaNegocioController extends Controller
     {
         $id = $request['id'];
 
-        if (!Utils::isRequiredParametersComplete([$id])) {
-            return Utils::parametrosIncompletosResponse(['id']);
+        if (!ResponseUtils::isRequiredParametersComplete([$id])) {
+            return ResponseUtils::parametrosIncompletosResponse(['id']);
         }
 
         // TODO Implementar la lógica de la petición
 
-        $categoriaEliminadaResponse = Utils::jsonResponse(200, [
+        $categoriaEliminadaResponse = ResponseUtils::jsonResponse(200, [
             'id' => $id
         ]);
 
         return $categoriaEliminadaResponse;
-//        return Utils::categoriaInexistenteResponse();
+//        return ResponseUtils::categoriaInexistenteResponse();
     }
 
     public function obtenerCategorias()
@@ -59,6 +59,6 @@ class CategoriaNegocioController extends Controller
             array_push($categoriaNames, $categoria['categoria']);
         }
 
-        return Utils::jsonResponse(200, $categoriaNames);
+        return ResponseUtils::jsonResponse(200, $categoriaNames);
     }
 }

@@ -27,8 +27,8 @@ class DuenoNegocioController extends Controller
         ]);
 
         return $duenoAgregadoResponse;
-//        return Utils::negocioInexistenteResponse();
-//        return Utils::usuarioInexistenteResponse();
+//        return ResponseUtils::negocioInexistenteResponse();
+//        return ResponseUtils::usuarioInexistenteResponse();
     }
 
     public function removerDueno(Request $request)
@@ -48,8 +48,8 @@ class DuenoNegocioController extends Controller
         ]);
 
         return $duenoRemovidoReponse;
-//        return Utils::negocioInexistenteResponse();
-//        return Utils::usuarioInexistenteResponse();
+//        return ResponseUtils::negocioInexistenteResponse();
+//        return ResponseUtils::usuarioInexistenteResponse();
     }
 
     public function listarDuenos(Request $request)
@@ -74,7 +74,7 @@ class DuenoNegocioController extends Controller
         ]);
 
         return $propietariosResponse;
-//        return Utils::jsonResponse(200, []);
-//        return Utils::negocioInexistenteResponse();
+//        return ResponseUtils::jsonResponse(200, []);
+//        return ResponseUtils::negocioInexistenteResponse();
     }
 }
