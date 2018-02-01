@@ -28,7 +28,7 @@ class CreateNegocioTable extends Migration
             $table->decimal('latitud', 12, 8);
             $table->decimal('longitud', 12, 8);
             $table->string('descripcion_breve', 200);
-            $table->string('descripcion_completa');
+            $table->text('descripcion_completa');
             $table->string('url_logo');
             $table->string('sitio_web', 100)->nullable();
             $table->string('facebook', 100)->nullable();
@@ -38,8 +38,6 @@ class CreateNegocioTable extends Migration
             $table->index(["suscripcion_id"], 'fk_negocio_suscripcion1_idx');
 
             $table->index(["categoria_negocio_id"], 'fk_negocio_categoria_negocio1_idx');
-
-            $table->unique(["descripcion_completa"], 'descripcion_completa_UNIQUE');
 
             $table->unique(["url_logo"], 'url_logo_UNIQUE');
 

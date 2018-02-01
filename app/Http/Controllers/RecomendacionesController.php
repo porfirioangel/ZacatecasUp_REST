@@ -11,7 +11,7 @@ class RecomendacionesController extends Controller
     private function getRecomendacionesSql($keywords)
     {
         $recomendacionesSql = "
-SELECT n.id, n.nombre, n.descripcion_breve, n.latitud, n.longitud, 
+SELECT n.id id_negocio, n.nombre, n.descripcion_breve, n.latitud, n.longitud, 
   n.url_logo logotipo,
   COUNT(DISTINCT k.keyword) coincidencias,
   (SELECT SUM(cl.calificacion) / COUNT(cl.negocio_id) FROM
@@ -36,7 +36,7 @@ FROM negocio AS n
     ON c.id = k.c_id OR p.id = k.p_id
   WHERE k.keyword IN ('" . implode("','", $keywords) . "')
     AND NOW() < s.fecha_fin
-GROUP BY id
+GROUP BY id_negocio
 ORDER BY tipo_suscripcion DESC, coincidencias DESC, calificacion DESC;
 ";
 

@@ -84,7 +84,7 @@ class UsuarioController extends Controller
 
         try {
             $usuario->save();
-            $usuario->profile_photo = '/uploads/' . sha1('usuario' .
+            $usuario->profile_photo = '/uploads/' . sha1('usuario_' .
                     $usuario->id);
             $usuario->save();
         } catch (Exception $e) {

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoriaNegocio;
+use App\EtiquetaNegocio;
 use App\Negocio;
 use App\ComentarioNegocio;
+use App\Http\Validators\NegocioExistente;
+use App\PalabraClave;
 use Illuminate\Http\Request;
-use Monolog\Processor\UidProcessor;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class NegocioController extends Controller
 {
@@ -78,6 +82,8 @@ class NegocioController extends Controller
             'fecha_fin_suscripcion' => '31/12/2017'
         ]);
 
+        // Nombre galeria: sha1('galeria_' . id_negocio . '_' . num_foto)
+
         return $negocioRegistradoResponse;
 //        return ResponseUtils::categoriaInexistenteResponse();
     }
@@ -142,142 +148,197 @@ class NegocioController extends Controller
     }
 
     /**
+     * Obtiene la calificación de un negocio
+     */
+    private function getCalificacionNegocio($idNegocio)
+    {
+        $calificacionSql = "SELECT SUM(cl.calificacion) / " .
+            "COUNT(cl.negocio_id) calificacion FROM calificacion_negocio " .
+            "cl WHERE cl.negocio_id = " . $idNegocio . ";";
+
+        $calificacion = DB::select(DB::raw($calificacionSql));
+
+        return $calificacion[0]->calificacion;
+    }
+
+    /**
      * Obtiene los detalles de un negocio
      */
     public function detallesNegocio(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_negocio' => 'required|numeric',
+            'id_negocio' => ['required', 'numeric', new NegocioExistente],
         ]);
 
-        if ($validator->passes()) {
-
-        } else {
+        if (!$validator->passes()) {
             return ResponseUtils::jsonResponse(400, [
-                'error' => $validator->errors()->all()
+                'errors' => $validator->errors()->all()
             ]);
         }
 
-        $id_negocio = $request['id_negocio'];
+        $negocio = Negocio::find($request['id_negocio'])->toArray();
 
-        if (!ResponseUtils::isRequiredParametersComplete([$id_negocio])) {
-            return ResponseUtils::parametrosIncompletosResponse(['id_negocio']);
+        $categoria = CategoriaNegocio::find($negocio['categoria_negocio_id']);
+
+        $detallesResponse = array_merge([], $negocio);
+        $detallesResponse['logotipo'] = $detallesResponse['url_logo'];
+        unset($detallesResponse['url_logo']);
+        unset($detallesResponse['categoria_negocio_id']);
+        unset($detallesResponse['suscripcion_id']);
+        $detallesResponse['categoria'] = $categoria->categoria;
+        $detallesResponse['calificacion'] =
+            $this->getCalificacionNegocio($negocio['id']);
+
+        $palabrasClave = DB::table('palabra_clave')
+            ->join('etiqueta_negocio', 'palabra_clave.id', '=',
+                'etiqueta_negocio.palabra_clave_id')
+            ->where('etiqueta_negocio.negocio_id', '=', $negocio['id'])
+            ->select('palabra_clave.keyword')->get();
+
+        $detallesResponse['palabras_clave'] = [];
+
+        foreach ($palabrasClave as $palabra) {
+            array_push($detallesResponse['palabras_clave'], $palabra->keyword);
         }
 
-        $detallesResponse = ResponseUtils::jsonResponse(200, [
-            'nombre' => 'Macdonnals',
-            'logotipo' => '/logos/customer-service.png',
-            'categoria' => 'Comida',
-            'calificacion' => 3.8,
-            'sitio_web' => 'http://macdonnals.com',
-            'latitud' => 100.24232,
-            'longitud' => 100.43243,
-            'galeria' => [
-                '/galeria/kfc_01.jpg',
-                '/galeria/kfc_02.jpg',
-                '/galeria/kfc_03.jpg'
-            ],
-            'descripcion_breve' => 'Un establecimiento muy cool',
-            'descripcion_completa' => [
-                'descripcion' => [
-                    'tipo' => 'texto',
-                    'titulo' => 'Descripción',
-                    'contenido' => 'McDonald\'s es una cadena de restaurantes de rápida. Sus principales productos son las hamburguesas, papas fritas, los menús para el desayuno, los refrescos, batidos, los helados, los postres y, recientemente, ensaladas de fruta y otros productos exclusivos para países.'
-                ],
-                'productos' => [
-                    'tipo' => 'lista',
-                    'titulo' => 'Productos',
-                    'contenido' => [
-                        'Hamburguesas',
-                        'Burritos',
-                        'Hot Dogs'
-                    ]
-                ],
-                'horario' => [
-                    'tipo' => 'lista',
-                    'titulo' => 'Horario',
-                    'contenido' => [
-                        'Lunes a viernes de 2:00 pm a 4:00 pm',
-                        'Sábados de 2:00 pm a 4:00 pm y de 6:00 pm a 2:00 am',
-                        'Domingos cerrado'
-                    ]
-                ],
-                'telefono' => [
-                    'tipo' => 'lista',
-                    'titulo' => 'Teléfono',
-                    'contenido' => [
-                        '4949428610',
-                        '4949428611',
-                        '4949428612'
-                    ]
-                ]
-            ],
-            'palabras_clave' => [
-                'comida',
-                'hamburguesas',
-                'chatarra'
-            ],
-            'comentarios' => [
-                [
-                    'fecha' => '12/09/2017',
-                    'autor' => 'Martin López Pereira',
-                    'comentario' => 'Un establecimiento muy higiénico',
-                    'autor_foto' => '/usuarios/usuario_01.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo',
-                    'autor_foto' => '/usuarios/usuario_02.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo',
-                    'autor_foto' => '/usuarios/usuario_03.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo',
-                    'autor_foto' => '/usuarios/usuario_04.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/usuarios/usuario_05.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/usuarios/usuario_05.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/usuarios/usuario_05.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/usuarios/usuario_05.jpg'
-                ],
-                [
-                    'fecha' => '11/09/2017',
-                    'autor' => 'Porfirio López Pereira',
-                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
-                    'autor_foto' => '/usuarios/usuario_05.jpg'
-                ]
-            ]
+        $comentarios = DB::table('comentario_negocio as cm')
+            ->join('usuario as u', 'u.id', '=', 'cm.usuario_id')
+            ->where('negocio_id', '=', $negocio['id'])
+            ->select('cm.fecha', 'cm.comentario', 'u.nombre as autor',
+                'u.profile_photo as autor_foto')
+            ->get();
 
-        ]);
+        $detallesResponse['comentarios'] = $comentarios;
 
-        return $detallesResponse;
-//        return ResponseUtils::negocioInexistenteResponse();
+        $galeria = DB::table('galeria_negocio as gn')
+            ->where('gn.negocio_id', '=', $negocio['id'])
+            ->select('url_foto')
+            ->get();
+
+        $detallesResponse['galeria'] = [];
+
+        foreach ($galeria as $foto) {
+            array_push($detallesResponse['galeria'], $foto->url_foto);
+        }
+
+        $descripcionCompleta = json_decode($negocio['descripcion_completa'],
+            true);
+
+        $detallesResponse['descripcion_completa'] = $descripcionCompleta;
+
+        return ResponseUtils::jsonResponse(200, $detallesResponse);
+
+//        $detallesResponse = ResponseUtils::jsonResponse(200, [
+//            'nombre' => 'Macdonnals',
+//            'logotipo' => '/logos/customer-service.png',
+//            'categoria' => 'Comida',
+//            'calificacion' => 3.8,
+//            'sitio_web' => 'http://macdonnals.com',
+//            'latitud' => 100.24232,
+//            'longitud' => 100.43243,
+//            'galeria' => [
+//                '/galeria/kfc_01.jpg',
+//                '/galeria/kfc_02.jpg',
+//                '/galeria/kfc_03.jpg'
+//            ],
+//            'descripcion_breve' => 'Un establecimiento muy cool',
+//            'descripcion_completa' => [
+//                'descripcion' => [
+//                    'tipo' => 'texto',
+//                    'titulo' => 'Descripción',
+//                    'contenido' => 'McDonald\'s es una cadena de restaurantes de rápida. Sus principales productos son las hamburguesas, papas fritas, los menús para el desayuno, los refrescos, batidos, los helados, los postres y, recientemente, ensaladas de fruta y otros productos exclusivos para países.'
+//                ],
+//                'productos' => [
+//                    'tipo' => 'lista',
+//                    'titulo' => 'Productos',
+//                    'contenido' => [
+//                        'Hamburguesas',
+//                        'Burritos',
+//                        'Hot Dogs'
+//                    ]
+//                ],
+//                'horario' => [
+//                    'tipo' => 'lista',
+//                    'titulo' => 'Horario',
+//                    'contenido' => [
+//                        'Lunes a viernes de 2:00 pm a 4:00 pm',
+//                        'Sábados de 2:00 pm a 4:00 pm y de 6:00 pm a 2:00 am',
+//                        'Domingos cerrado'
+//                    ]
+//                ],
+//                'telefono' => [
+//                    'tipo' => 'lista',
+//                    'titulo' => 'Teléfono',
+//                    'contenido' => [
+//                        '4949428610',
+//                        '4949428611',
+//                        '4949428612'
+//                    ]
+//                ]
+//            ],
+//            'palabras_clave' => [
+//                'comida',
+//                'hamburguesas',
+//                'chatarra'
+//            ],
+//            'comentarios' => [
+//                [
+//                    'fecha' => '12/09/2017',
+//                    'autor' => 'Martin López Pereira',
+//                    'comentario' => 'Un establecimiento muy higiénico',
+//                    'autor_foto' => '/usuarios/2a245ea2cade1819c3f3cf3803c4ea015793d5bb'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo',
+//                    'autor_foto' => '/usuarios/8cdb9abc54ad2e233ee9ec7c13aa522308218d54'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo',
+//                    'autor_foto' => '/usuarios/d6774e726178efd4c37fa58b5a0201e04c45a358'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo',
+//                    'autor_foto' => '/usuarios/usuario_04.jpg'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+//                    'autor_foto' => '/usuarios/07626f51fda67ba39daebc72e1c933f1283f5a75'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+//                    'autor_foto' => '/usuarios/07626f51fda67ba39daebc72e1c933f1283f5a75'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+//                    'autor_foto' => '/usuarios/07626f51fda67ba39daebc72e1c933f1283f5a75'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+//                    'autor_foto' => '/usuarios/07626f51fda67ba39daebc72e1c933f1283f5a75'
+//                ],
+//                [
+//                    'fecha' => '11/09/2017',
+//                    'autor' => 'Porfirio López Pereira',
+//                    'comentario' => 'Un establecimiento muy feo, nunca jamás volveré a utilizar sus servicios',
+//                    'autor_foto' => '/usuarios/07626f51fda67ba39daebc72e1c933f1283f5a75'
+//                ]
+//            ]
+//
+//        ]);
     }
 
 }
