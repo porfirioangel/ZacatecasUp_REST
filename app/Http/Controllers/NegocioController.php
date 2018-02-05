@@ -202,17 +202,23 @@ class NegocioController extends Controller
             array_push($detallesResponse['palabras_clave'], $palabra->keyword);
         }
 
+//        $comentarios = DB::table('comentario_negocio as cm')
+//            ->join('usuario as u', 'u.id', '=', 'cm.usuario_id')
+//            ->where('negocio_id', '=', $negocio['id'])
+//            ->select('cm.fecha', 'cm.comentario', 'u.nombre as autor',
+//                'u.profile_photo as autor_foto')
+//            ->orderBy('cm.fecha', 'desc')
+//            ->get();
+//
+//        foreach ($comentarios as $comentario) {
+//            $date = new DateTime($comentario->fecha);
+//            $comentario->fecha = $date->format('d/m/Y h:i a');
+//        }
+
         $comentarios = DB::table('comentario_negocio as cm')
             ->join('usuario as u', 'u.id', '=', 'cm.usuario_id')
             ->where('negocio_id', '=', $negocio['id'])
-            ->select('cm.fecha', 'cm.comentario', 'u.nombre as autor',
-                'u.profile_photo as autor_foto')
-            ->get();
-
-        foreach ($comentarios as $comentario) {
-            $date = new DateTime($comentario->fecha);
-            $comentario->fecha = $date->format('d/m/Y h:i a');
-        }
+            ->count();
 
         $detallesResponse['comentarios'] = $comentarios;
 

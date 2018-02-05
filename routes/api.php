@@ -85,6 +85,8 @@ Route::post('calificar_negocio','CalificacionNegocioController@calificarNegocio'
 
 Route::post('agregar_comentario','ComentarioNegocioController@agregarComentario');
 
+Route::get('obtener_comentarios','ComentarioNegocioController@obtenerComentarios');
+
 /*
 |--------------------------------------------------------------------------
 | Rutas de buscarRecomendaciones
