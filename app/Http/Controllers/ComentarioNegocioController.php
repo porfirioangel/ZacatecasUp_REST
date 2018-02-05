@@ -73,5 +73,5 @@ class ComentarioNegocioController extends Controller
         return ResponseUtils::jsonResponse(200, $comentarios);
 
     }
-    
+
 }
