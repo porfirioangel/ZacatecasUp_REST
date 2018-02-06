@@ -148,19 +148,7 @@ class NegocioController extends Controller
 //        return ResponseUtils::negocioInexistenteResponse();
     }
 
-    /**
-     * Obtiene la calificación de un negocio
-     */
-    private function getCalificacionNegocio($idNegocio)
-    {
-        $calificacionSql = "SELECT SUM(cl.calificacion) / " .
-            "COUNT(cl.negocio_id) calificacion FROM calificacion_negocio " .
-            "cl WHERE cl.negocio_id = " . $idNegocio . ";";
 
-        $calificacion = DB::select(DB::raw($calificacionSql));
-
-        return $calificacion[0]->calificacion;
-    }
 
     /**
      * Obtiene los detalles de un negocio
@@ -188,7 +176,7 @@ class NegocioController extends Controller
         unset($detallesResponse['suscripcion_id']);
         $detallesResponse['categoria'] = $categoria->categoria;
         $detallesResponse['calificacion'] =
-            $this->getCalificacionNegocio($negocio['id']);
+            CalificacionNegocioController::getCalificacionNegocio($negocio['id']);
 
         $palabrasClave = DB::table('palabra_clave')
             ->join('etiqueta_negocio', 'palabra_clave.id', '=',

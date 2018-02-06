@@ -62,8 +62,8 @@ class Handler extends ExceptionHandler
                         'error' => 'Verbo http inválido'
                     ]);
                 default:
-                    return ResponseUtils::jsonResponse(400, [
-                        'error' => 'Error desconocido'
+                    return ResponseUtils::jsonResponse($status, [
+                        'error' => 'Error de status ' . $status
                     ]);
             }
         } else {
