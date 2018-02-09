@@ -69,6 +69,7 @@ class RecomendacionesController extends Controller
         $this->addQueryMatches($recomendaciones, $searchQuery);
         $this->addPointsAverage($recomendaciones);
         $recomendaciones = $recomendaciones->toArray();
+        $recomendaciones = $this->filterRecsWithoutMatches($recomendaciones);
 
         usort($recomendaciones, array($this, "cmp"));
 
@@ -204,5 +205,22 @@ class RecomendacionesController extends Controller
                     $recomendacion->ponderacion_coincidencias) / 3, 1);
             $recomendacion->ponderacion_promedio = $average;
         }
+    }
+
+    /**
+     * Devuelve un arreglo de recomendaciones donde se filtran aquellas que
+     * no obtuvieron coincidencias.
+     */
+    private function filterRecsWithoutMatches($recsArray)
+    {
+        $recsFiltered = [];
+
+        foreach ($recsArray as $recomendacion) {
+            if ($recomendacion->coincidencias > 10) {
+                array_push($recsFiltered, $recomendacion);
+            }
+        }
+
+        return $recsFiltered;
     }
 }
