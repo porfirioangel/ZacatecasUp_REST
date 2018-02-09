@@ -13,55 +13,55 @@ class PalabraClaveTableSeeder extends Seeder
     public function run()
     {
         PalabraClave::create([
-            'keyword' => 'Autoservicio'
+            'keyword' => 'autoservicio'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Sabritas'
+            'keyword' => 'sabritas'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Hamburguesa'
+            'keyword' => 'hamburguesa'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Hot dog'
+            'keyword' => 'hot dog'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Papas fritas'
+            'keyword' => 'papas fritas'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Cerveza'
+            'keyword' => 'cerveza'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Refresco'
+            'keyword' => 'refresco'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Coca Cola'
+            'keyword' => 'coca cola'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Chocolate'
+            'keyword' => 'chocolate'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Huitzilla'
+            'keyword' => 'huitzilla'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Cajita feliz'
+            'keyword' => 'cajita feliz'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Sabor'
+            'keyword' => 'sabor'
         ]);
 
         PalabraClave::create([
-            'keyword' => 'Velocidad'
+            'keyword' => 'velocidad'
         ]);
     }
 }

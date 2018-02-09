@@ -149,7 +149,6 @@ class NegocioController extends Controller
     }
 
 
-
     /**
      * Obtiene los detalles de un negocio
      */

@@ -5,87 +5,150 @@ namespace App\Http\Controllers;
 use App\Negocio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Validator;
+use DateTime;
 
 class RecomendacionesController extends Controller
 {
-    private function getRecomendacionesSql($keywords)
-    {
-        $recomendacionesSql = "
-SELECT n.id id_negocio, n.nombre, n.descripcion_breve, n.latitud, n.longitud, 
-  n.url_logo logotipo,
-  COUNT(DISTINCT k.keyword) coincidencias,
-  (SELECT SUM(cl.calificacion) / COUNT(cl.negocio_id) FROM
-    calificacion_negocio cl WHERE cl.negocio_id = n.id) calificacion,
-  s.tipo tipo_suscripcion
-FROM negocio AS n
-  INNER JOIN calificacion_negocio cl
-    ON n.id = cl.negocio_id
-  INNER JOIN etiqueta_negocio e
-    ON n.id = e.negocio_id
-  INNER JOIN palabra_clave p
-    ON p.id = e.palabra_clave_id
-  INNER JOIN categoria_negocio c
-    ON c.id = n.categoria_negocio_id
-  INNER JOIN suscripcion s
-    ON s.id = n.suscripcion_id
-  INNER JOIN (SELECT p.id p_id, NULL c_id, p.keyword keyword
-              FROM palabra_clave p
-              UNION
-              SELECT NULL, c.id, c.categoria
-              FROM categoria_negocio c) AS k
-    ON c.id = k.c_id OR p.id = k.p_id
-  WHERE k.keyword IN ('" . implode("','", $keywords) . "')
-    AND NOW() < s.fecha_fin
-GROUP BY id_negocio
-ORDER BY tipo_suscripcion DESC, coincidencias DESC, calificacion DESC;
-";
-
-        return $recomendacionesSql;
-    }
-
-
     /**
      * Obtiene las recomendaciones de negocios basado en un conjunto de
      * palabras clave.
      */
     public function buscarRecomendaciones(Request $request)
     {
-        $searchQuery = $request['palabras_clave'];
+        $validator = Validator::make($request->all(), [
+            'palabras_clave' => ['required'],
+        ]);
 
-        if (!ResponseUtils::isRequiredParametersComplete([$searchQuery])) {
-            return ResponseUtils::parametrosIncompletosResponse(['palabras_clave']);
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
         }
 
-        $tokens = $this->getSearchQueryTokens($searchQuery);
+        $searchQuery = strtolower($request['palabras_clave']);
 
-        $negocios = DB::select(DB::raw($this->getRecomendacionesSql($tokens)));
+        $recomendaciones = $this->getCurrentRecomendaciones();
+        $this->addQueryMatches($recomendaciones, $searchQuery);
 
-        return ResponseUtils::jsonResponse(200, $negocios);
+
+        return $recomendaciones;
     }
 
-
     /**
-     * Separa una cadena en tokens para formar los parámetros de búsqueda de
-     * un negocio, también hace combinaciones con los tokens existentes como
-     * convertir palabras a plural, singular, etc.
+     * Obtiene una colección de recomendaciones que están vigentes, pero que
+     * no han sido filtradas conforme la búsqueda del usuario.
      */
-    public function getSearchQueryTokens($searchQuery)
+    private function getCurrentRecomendaciones()
     {
-        $tokens = preg_split('/[\s]+/', $searchQuery);
-        $variations = [];
+        $recomendaciones = DB::table('negocio as n')
+            ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
+            ->select(['n.id', 'nombre', 'descripcion_breve', 'latitud',
+                'longitud', 'url_logo', 's.tipo as tipo_suscripcion'])
+            ->where('s.fecha_fin', '>=', new DateTime())
+            ->get();
 
-        foreach ($tokens as $token) {
-            if (substr($token, -2) == 'es') {
-                array_push($variations, substr($token, 0, -2));
-                array_push($variations, substr($token, 0, -1));
-            } else if (substr($token, -1) == 's') {
-                array_push($variations, substr($token, 0, -1));
+        foreach ($recomendaciones as $recomendacion) {
+            $calificacion =
+                CalificacionNegocioController::getCalificacionNegocio
+                ($recomendacion->id);
+            $recomendacion->calificacion = $calificacion;
+
+            $tipo = $recomendacion->tipo_suscripcion;
+
+            if ($tipo == 'Normal') {
+                $recomendacion->ponderacion_suscripcion = 2.5;
+            } else if ($tipo == 'Premium') {
+                $recomendacion->ponderacion_suscripcion = 5;
             } else {
-                array_push($variations, $token . 's');
-                array_push($variations, $token . 'es');
+                $recomendacion->ponderacion_suscripcion = 0;
             }
         }
 
-        return array_unique(array_merge($tokens, $variations));
+        return $recomendaciones;
+    }
+
+    /**
+     * Agrega a cada recomendación las coincidencias de sus palabras clave
+     * con la búsqueda del usuario.
+     */
+    private function addQueryMatches($recomendaciones, $userQuery)
+    {
+        $maxCoincidencias = 0;
+
+        foreach ($recomendaciones as $recomendacion) {
+            $keywords = $this->getKeywordArray($recomendacion->id);
+            $keywordsStr = implode(' ', $keywords);
+            $searchTokens = $this->getSearchQuerySingularWords($userQuery);
+            $coincidencias = 0;
+
+            foreach ($searchTokens as $word) {
+                $coincidencias += substr_count($keywordsStr, $word);
+            }
+
+            $coincidencias += 10;
+
+            $recomendacion->coincidencias = $coincidencias;
+
+            if ($coincidencias > $maxCoincidencias) {
+                $maxCoincidencias = $coincidencias;
+            }
+        }
+
+        foreach ($recomendaciones as $recomendacion) {
+            $ponderacion = $recomendacion->coincidencias * 5 /
+                $maxCoincidencias;
+            $recomendacion->ponderacion_coincidencias = $ponderacion;
+        }
+    }
+
+    /**
+     * Obtiene un arreglo con las keywords, que son las palabras clave y las
+     * categorías.
+     */
+    private function getKeywordArray($negocioId)
+    {
+        $palabrasClave = DB::table('palabra_clave as pc')
+            ->join('etiqueta_negocio as en', 'pc.id', '=', 'en.palabra_clave_id')
+            ->select([DB::raw('LOWER(keyword) as keyword')])
+            ->where('en.negocio_id', '=', $negocioId);
+
+        $categorias = DB::table('categoria_negocio as cn')
+            ->join('negocio as n', 'cn.id', '=', 'n.categoria_negocio_id')
+            ->select([DB::raw('LOWER(categoria) as keyword')])
+            ->where('n.id', '=', $negocioId);
+
+        $keywords = $palabrasClave->union($categorias)->get();
+
+        $array = [];
+
+        foreach ($keywords as $keyword) {
+            array_push($array, $keyword->keyword);
+        }
+
+        return $array;
+    }
+
+    /**
+     * Obtiene un arreglo con las palabras de la búsqueda del usuario
+     * convertidas a singular.
+     */
+    private function getSearchQuerySingularWords($searchQuery)
+    {
+        $tokens = preg_split('/[\s]+/', $searchQuery);
+        $singulars = [];
+
+        foreach ($tokens as $token) {
+            if (substr($token, -2) == 'es') {
+                array_push($singulars, substr($token, 0, -2));
+                array_push($singulars, substr($token, 0, -1));
+            } else if (substr($token, -1) == 's') {
+                array_push($singulars, substr($token, 0, -1));
+            } else {
+                array_push($singulars, $token);
+            }
+        }
+
+        return array_unique($singulars);
     }
 }
