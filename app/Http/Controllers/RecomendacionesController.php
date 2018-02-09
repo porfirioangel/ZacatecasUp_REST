@@ -11,6 +11,44 @@ use DateTime;
 class RecomendacionesController extends Controller
 {
     /**
+     * Función de comparación de recomendaciones usada para la ordenación de
+     * una colección de las mismas.
+     */
+    public function cmp($a, $b)
+    {
+        // Comparación para orden descendente
+        $difference = $b->ponderacion_promedio - $a->ponderacion_promedio;
+
+        if ($difference > 0) {
+            return 1;
+        } else if ($difference < 0) {
+            return -1;
+        } else {
+            $differencePS = $b->ponderacion_suscripcion -
+                $a->ponderacion_suscripcion;
+            $differencePC = $b->ponderacion_coincidencias -
+                $a->ponderacion_coincidencias;
+            $differenceC = $b->calificacion - $a->calificacion;
+
+            if ($differencePS > 0) {
+                return 1;
+            } else if ($differencePS < 0) {
+                return -1;
+            } else if ($differencePC > 0) {
+                return 1;
+            } else if ($differencePC < 0) {
+                return -1;
+            } else if ($differenceC > 0) {
+                return 1;
+            } else if ($differenceC < 0) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+    }
+
+    /**
      * Obtiene las recomendaciones de negocios basado en un conjunto de
      * palabras clave.
      */
@@ -27,10 +65,12 @@ class RecomendacionesController extends Controller
         }
 
         $searchQuery = strtolower($request['palabras_clave']);
-
         $recomendaciones = $this->getCurrentRecomendaciones();
         $this->addQueryMatches($recomendaciones, $searchQuery);
+        $this->addPointsAverage($recomendaciones);
+        $recomendaciones = $recomendaciones->toArray();
 
+        usort($recomendaciones, array($this, "cmp"));
 
         return $recomendaciones;
     }
@@ -151,5 +191,18 @@ class RecomendacionesController extends Controller
         }
 
         return array_unique($singulars);
+    }
+
+    /**
+     * Agrega a cada recomendación el promedio de sus ponderaciones.
+     */
+    private function addPointsAverage($recomendaciones)
+    {
+        foreach ($recomendaciones as $recomendacion) {
+            $average = round(($recomendacion->calificacion +
+                    $recomendacion->ponderacion_suscripcion +
+                    $recomendacion->ponderacion_coincidencias) / 3, 1);
+            $recomendacion->ponderacion_promedio = $average;
+        }
     }
 }
