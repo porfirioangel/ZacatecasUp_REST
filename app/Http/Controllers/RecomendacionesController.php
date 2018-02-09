@@ -43,15 +43,16 @@ class RecomendacionesController extends Controller
     {
         $recomendaciones = DB::table('negocio as n')
             ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
-            ->select(['n.id', 'nombre', 'descripcion_breve', 'latitud',
-                'longitud', 'url_logo', 's.tipo as tipo_suscripcion'])
+            ->select(['n.id as id_negocio', 'nombre', 'descripcion_breve', 'latitud',
+                'longitud', 'url_logo as logotipo',
+                's.tipo as tipo_suscripcion'])
             ->where('s.fecha_fin', '>=', new DateTime())
             ->get();
 
         foreach ($recomendaciones as $recomendacion) {
             $calificacion =
                 CalificacionNegocioController::getCalificacionNegocio
-                ($recomendacion->id);
+                ($recomendacion->id_negocio);
             $recomendacion->calificacion = $calificacion;
 
             $tipo = $recomendacion->tipo_suscripcion;
@@ -77,7 +78,7 @@ class RecomendacionesController extends Controller
         $maxCoincidencias = 0;
 
         foreach ($recomendaciones as $recomendacion) {
-            $keywords = $this->getKeywordArray($recomendacion->id);
+            $keywords = $this->getKeywordArray($recomendacion->id_negocio);
             $keywordsStr = implode(' ', $keywords);
             $searchTokens = $this->getSearchQuerySingularWords($userQuery);
             $coincidencias = 0;
