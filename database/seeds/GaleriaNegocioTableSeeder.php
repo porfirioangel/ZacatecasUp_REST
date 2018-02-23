@@ -13,33 +13,48 @@ class GaleriaNegocioTableSeeder extends Seeder
     public function run()
     {
         GaleriaNegocio::create([
-            'url_foto' => '/uploads/7520e54e7d7ff40f8f6440bd69a6eb74ca1d93f5',
+            'url_foto' => '/uploads/' . sha1('galeria_' . 1 . '_1'),
             'negocio_id' => 1
         ]);
 
         GaleriaNegocio::create([
-            'url_foto' => '/uploads/08cca321d1b894202793ae449e2ff7d99e581b7c',
+            'url_foto' => '/uploads/' . sha1('galeria_' . 1 . '_2'),
             'negocio_id' => 1
         ]);
 
         GaleriaNegocio::create([
-            'url_foto' => '/uploads/7bceeb62169251b48632c613ead622237341e96a',
+            'url_foto' => '/uploads/' . sha1('galeria_' . 1 . '_3'),
             'negocio_id' => 1
         ]);
 
         GaleriaNegocio::create([
-            'url_foto' => 'fotos/macdonalds_1.png',
+            'url_foto' => '/uploads/' . sha1('galeria_' . 2 . '_1'),
             'negocio_id' => 2
         ]);
 
         GaleriaNegocio::create([
-            'url_foto' => 'fotos/macdonalds_2.png',
+            'url_foto' => '/uploads/' . sha1('galeria_' . 2 . '_2'),
             'negocio_id' => 2
         ]);
 
         GaleriaNegocio::create([
-            'url_foto' => 'fotos/macdonalds_3.png',
+            'url_foto' => '/uploads/' . sha1('galeria_' . 2 . '_3'),
             'negocio_id' => 2
+        ]);
+
+        GaleriaNegocio::create([
+            'url_foto' => '/uploads/' . sha1('galeria_' . 3 . '_1'),
+            'negocio_id' => 3
+        ]);
+
+        GaleriaNegocio::create([
+            'url_foto' => '/uploads/' . sha1('galeria_' . 3 . '_2'),
+            'negocio_id' => 3
+        ]);
+
+        GaleriaNegocio::create([
+            'url_foto' => '/uploads/' . sha1('galeria_' . 3 . '_3'),
+            'negocio_id' => 3
         ]);
     }
 }

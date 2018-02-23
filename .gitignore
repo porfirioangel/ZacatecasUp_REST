@@ -5,7 +5,20 @@
 /public/galeria
 /public/logos
 /public/usuarios
-/public/uploads
+/public/uploads/*
+# Excluye fotos de usuarios de ser ignoradas
+!/public/uploads/07626f51fda67ba39daebc72e1c933f1283f5a75
+!/public/uploads/2a245ea2cade1819c3f3cf3803c4ea015793d5bb
+!/public/uploads/8cdb9abc54ad2e233ee9ec7c13aa522308218d54
+!/public/uploads/d6774e726178efd4c37fa58b5a0201e04c45a358
+# Excluye logos de negocios de ser ingnorados
+!/public/uploads/4ce83adef084a6c25669b866718587c7c60599d4
+!/public/uploads/9dddd915a48aed6f40cf713d0537674057e782d5
+# Excluye fotos de galerías de negocios de ser ignoradas
+!/public/uploads/7520e54e7d7ff40f8f6440bd69a6eb74ca1d93f5
+!/public/uploads/08cca321d1b894202793ae449e2ff7d99e581b7c
+!/public/uploads/7bceeb62169251b48632c613ead622237341e96a
+/public/log
 /storage/*.key
 /vendor
 /.idea
@@ -19,25 +32,6 @@ yarn-error.log
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion,
 Android Studio and Webstorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-
-# User-specific stuff:
-.idea/
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
-
-# Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-
-# Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
 
 # CMake
 cmake-build-debug/
@@ -59,13 +53,8 @@ out/
 # JIRA plugin
 atlassian-ide-plugin.xml
 
-# Cursive Clojure plugin
-.idea/replstate.xml
-
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-
-public/log

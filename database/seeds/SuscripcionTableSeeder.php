@@ -30,14 +30,14 @@ class SuscripcionTableSeeder extends Seeder
             'id' => 3,
             'tipo' => 'Premium',
             'fecha_inicio' => '2018-12-26',
-            'fecha_fin' => '2018-01-15'
+            'fecha_fin' => '2018-12-31'
         ]);
 
         Suscripcion::create([
             'id' => 4,
             'tipo' => 'Normal',
             'fecha_inicio' => '2018-07-01',
-            'fecha_fin' => '2018-07-18'
+            'fecha_fin' => '2018-12-31'
         ]);
     }
 }
