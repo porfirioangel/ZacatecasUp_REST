@@ -14,10 +14,21 @@
 # Excluye logos de negocios de ser ingnorados
 !/public/uploads/4ce83adef084a6c25669b866718587c7c60599d4
 !/public/uploads/9dddd915a48aed6f40cf713d0537674057e782d5
+!/public/uploads/ea7c2150c7db5b6ece37004672f8f610bee57946
+!/public/uploads/d5cd2158a057072e98b4973bd756e78fc9a10f38
 # Excluye fotos de galerías de negocios de ser ignoradas
 !/public/uploads/7520e54e7d7ff40f8f6440bd69a6eb74ca1d93f5
 !/public/uploads/08cca321d1b894202793ae449e2ff7d99e581b7c
 !/public/uploads/7bceeb62169251b48632c613ead622237341e96a
+!/public/uploads/4fc73f0337d0bd493aeb8daa8ac709928e9deb27
+!/public/uploads/6b9573963fe10f150fd10e53f506026d08ec07a2
+!/public/uploads/456722306657bb2e1feb326edd445fc96d6781c5
+!/public/uploads/4d45f9c2a9fb09093e7686da9d44a5d11c23a788
+!/public/uploads/0b625b24a7f1c20448374eaea19734c4b1be0fde
+!/public/uploads/e2a1e7d9eff9bddd292e50506f2b0bdd5cbdc455
+!/public/uploads/dc7f815e72eb6e55da7d611664bf1470fd55a0c2
+!/public/uploads/af339afaed25ea8b408f88682f7fa92d595f7433
+!/public/uploads/9727dae0391f0a0ed12d04f4ef77a5a56bc8d4c6
 /public/log
 /storage/*.key
 /vendor

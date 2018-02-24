@@ -56,5 +56,20 @@ class GaleriaNegocioTableSeeder extends Seeder
             'url_foto' => '/uploads/' . sha1('galeria_' . 3 . '_3'),
             'negocio_id' => 3
         ]);
+
+        GaleriaNegocio::create([
+            'url_foto' => '/uploads/' . sha1('galeria_' . 4 . '_1'),
+            'negocio_id' => 4
+        ]);
+
+        GaleriaNegocio::create([
+            'url_foto' => '/uploads/' . sha1('galeria_' . 4 . '_2'),
+            'negocio_id' => 4
+        ]);
+
+        GaleriaNegocio::create([
+            'url_foto' => '/uploads/' . sha1('galeria_' . 4 . '_3'),
+            'negocio_id' => 4
+        ]);
     }
 }
