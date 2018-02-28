@@ -14,5 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::post('upload_photo', 'UsuarioController@uploadPhoto');
