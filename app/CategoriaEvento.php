@@ -2,12 +2,11 @@
 
 namespace App;
 
-use App\Negocio;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaNegocio extends Model
+class CategoriaEvento extends Model
 {
-    protected $table = 'categoria_negocio';
+    protected $table = 'categoria_evento';
     public $timestamps = false;
 
     protected $fillable = [

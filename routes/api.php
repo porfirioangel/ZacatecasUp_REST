@@ -302,3 +302,32 @@ Route::get('obtener_comentarios', 'ComentarioNegocioController@obtenerComentario
 */
 Route::get('buscar_recomendaciones', 'RecomendacionesController@buscarRecomendaciones');
 
+/*
+|--------------------------------------------------------------------------
+| Rutas de CategoriaEventoController
+|--------------------------------------------------------------------------
+*/
+
+/*
+ * -------------------------------------------------------------------------
+ * Descripción: Obtiene las categorías de evento existentes
+ * -------------------------------------------------------------------------
+ * Verbo http: GET
+ * -------------------------------------------------------------------------
+*/
+Route::get('obtener_categorias_evento', 'CategoriaEventoController@obtenerCategorias');
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de EventoController
+|--------------------------------------------------------------------------
+*/
+
+/*
+ * -------------------------------------------------------------------------
+ * Descripción: Obtiene los eventos disponibles
+ * -------------------------------------------------------------------------
+ * Verbo http: GET
+ * -------------------------------------------------------------------------
+*/
+Route::get('obtener_eventos', 'EventoController@obtenerEventos');

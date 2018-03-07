@@ -29,6 +29,9 @@
 !/public/uploads/dc7f815e72eb6e55da7d611664bf1470fd55a0c2
 !/public/uploads/af339afaed25ea8b408f88682f7fa92d595f7433
 !/public/uploads/9727dae0391f0a0ed12d04f4ef77a5a56bc8d4c6
+# Excluye fotos de eventos
+!/public/uploads/aa22d98a63e59cbbf4eaa14487c5dda3a6f0914b
+!/public/uploads/adbeb1b77f0b56df9febf0edf8810f58c7eec9ea
 /public/log
 /storage/*.key
 /vendor

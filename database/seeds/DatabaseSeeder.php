@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PalabraClaveTableSeeder::class);
         $this->call(EtiquetaNegocioTableSeeder::class);
         $this->call(GaleriaNegocioTableSeeder::class);
-
-        //factory(CategoriaNegocio::class, 100)->create();
+        $this->call(CategoriaEventoTableSeeder::class);
+        $this->call(EventoTableSeeder::class);
     }
 }
