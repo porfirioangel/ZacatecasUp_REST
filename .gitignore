@@ -32,6 +32,7 @@
 # Excluye fotos de eventos
 !/public/uploads/aa22d98a63e59cbbf4eaa14487c5dda3a6f0914b
 !/public/uploads/adbeb1b77f0b56df9febf0edf8810f58c7eec9ea
+!/public/uploads/f82fea17e768e56dd90a53040ab437fb69f47c33
 /public/log
 /storage/*.key
 /vendor

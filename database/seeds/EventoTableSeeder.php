@@ -38,5 +38,18 @@ class EventoTableSeeder extends Seeder
             'categoria_evento_id' => 1
         ]);
 
+        Evento::create([
+            'id' => 3,
+            'nombre' => 'Ramón Vargas',
+            'descripcion' => 'Exposición de Ramón Vargas',
+            'fecha_inicio' => '2018-03-21 19:00:00',
+            'fecha_fin' => '2018-03-21 22:00:00',
+            'latitud' => '22.7760702',
+            'longitud' => '-102.5740353',
+            'costo' => 'Gratuito',
+            'url_flyer' => '/uploads/' . sha1('evento_' . 3),
+            'categoria_evento_id' => 2
+        ]);
+
     }
 }
