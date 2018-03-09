@@ -33,6 +33,10 @@
 !/public/uploads/aa22d98a63e59cbbf4eaa14487c5dda3a6f0914b
 !/public/uploads/adbeb1b77f0b56df9febf0edf8810f58c7eec9ea
 !/public/uploads/f82fea17e768e56dd90a53040ab437fb69f47c33
+# Excluye fotos de promociones
+!/public/uploads/3a53214ba3605a2612cef6ccb484a5f258454f96
+!/public/uploads/98a948c4f0a313534dd974eeaf0fb7c0bc022cb4
+!/public/uploads/b7a42995f553d59efc3d898863dbfaf671d39260
 /public/log
 /storage/*.key
 /vendor

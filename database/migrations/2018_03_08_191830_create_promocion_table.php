@@ -4,17 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGaleriaNegocioTable extends Migration
+class CreatePromocionTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'galeria_negocio';
+    public $set_schema_table = 'promocion_negocio';
 
     /**
      * Run the migrations.
-     * @table galeria_negocio
      *
      * @return void
      */
@@ -27,12 +26,10 @@ class CreateGaleriaNegocioTable extends Migration
             $table->string('url_foto');
             $table->integer('negocio_id')->unsigned();
 
-            $table->index(["negocio_id"], 'fk_foto_establecimiento_negocio_idx');
-
+            $table->index(["negocio_id"], 'fk_promocion_negocio_idx');
             $table->unique(["url_foto"], 'url_foto_UNIQUE');
 
-
-            $table->foreign('negocio_id', 'fk_foto_establecimiento_negocio_idx')
+            $table->foreign('negocio_id', 'fk_promocion_negocio_idx')
                 ->references('id')->on('negocio')
                 ->onDelete('no action')
                 ->onUpdate('no action');

@@ -331,3 +331,18 @@ Route::get('obtener_categorias_evento', 'CategoriaEventoController@obtenerCatego
  * -------------------------------------------------------------------------
 */
 Route::get('obtener_eventos', 'EventoController@obtenerEventos');
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de PromocionNegocioController
+|--------------------------------------------------------------------------
+*/
+
+/*
+ * -------------------------------------------------------------------------
+ * Descripción: Obtiene las promociones disponibles
+ * -------------------------------------------------------------------------
+ * Verbo http: GET
+ * -------------------------------------------------------------------------
+*/
+Route::post('obtener_promociones', 'PromocionNegocioController@obtenerPromociones');
