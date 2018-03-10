@@ -13,18 +13,18 @@ class PromocionNegocioTableSeeder extends Seeder
     public function run()
     {
         PromocionNegocio::create([
-            'url_foto' => '/uploads/' . sha1('promocion_' . 1 . '_1'),
-            'negocio_id' => 1
+            'url_foto' => '/uploads/' . sha1('promocion_' . 4 . '_1'),
+            'negocio_id' => 4
         ]);
 
         PromocionNegocio::create([
-            'url_foto' => '/uploads/' . sha1('promocion_' . 1 . '_2'),
-            'negocio_id' => 1
+            'url_foto' => '/uploads/' . sha1('promocion_' . 4 . '_2'),
+            'negocio_id' => 4
         ]);
 
         PromocionNegocio::create([
-            'url_foto' => '/uploads/' . sha1('promocion_' . 1 . '_3'),
-            'negocio_id' => 1
+            'url_foto' => '/uploads/' . sha1('promocion_' . 4 . '_3'),
+            'negocio_id' => 4
         ]);
     }
 }

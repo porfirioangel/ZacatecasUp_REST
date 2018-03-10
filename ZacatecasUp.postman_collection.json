@@ -853,7 +853,7 @@
 						"registrar_categoria_evento"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -875,7 +875,7 @@
 						"obtener_categorias_evento"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -904,7 +904,7 @@
 		{
 			"name": "Obtener promociones",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
@@ -929,7 +929,7 @@
 						"obtener_promociones"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -951,7 +951,7 @@
 						"check_login"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -973,7 +973,7 @@
 						"logout"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		}

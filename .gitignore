@@ -34,9 +34,9 @@
 !/public/uploads/adbeb1b77f0b56df9febf0edf8810f58c7eec9ea
 !/public/uploads/f82fea17e768e56dd90a53040ab437fb69f47c33
 # Excluye fotos de promociones
-!/public/uploads/3a53214ba3605a2612cef6ccb484a5f258454f96
-!/public/uploads/98a948c4f0a313534dd974eeaf0fb7c0bc022cb4
-!/public/uploads/b7a42995f553d59efc3d898863dbfaf671d39260
+!/public/uploads/b52af1a7f4b3ab7568a191b984fe110e0f25334f
+!/public/uploads/771dd5029a217c2c700b50e0dab10f816fee89cc
+!/public/uploads/c28f20b78caa5bc59d5cb897022a2bd2976b440c
 /public/log
 /storage/*.key
 /vendor

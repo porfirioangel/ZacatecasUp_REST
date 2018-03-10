@@ -370,4 +370,4 @@ Route::get('obtener_eventos', 'EventoController@obtenerEventos');
  * Verbo http: GET
  * -------------------------------------------------------------------------
 */
-Route::post('obtener_promociones', 'PromocionNegocioController@obtenerPromociones');
+Route::get('obtener_promociones', 'PromocionNegocioController@obtenerPromociones');
