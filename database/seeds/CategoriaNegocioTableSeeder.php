@@ -14,7 +14,7 @@ class CategoriaNegocioTableSeeder extends Seeder
     {
         CategoriaNegocio::create([
             'id' => 1,
-            'categoria' => 'Cafeterías'
+            'categoria' => 'Cafés'
         ]);
 
         CategoriaNegocio::create([
@@ -28,23 +28,8 @@ class CategoriaNegocioTableSeeder extends Seeder
         ]);
 
         CategoriaNegocio::create([
-            'id' => 4,
-            'categoria' => 'Clubs Nocturnos'
-        ]);
-
-        CategoriaNegocio::create([
             'id' => 5,
             'categoria' => 'Servicios'
-        ]);
-
-        CategoriaNegocio::create([
-            'id' => 6,
-            'categoria' => 'Turismo'
-        ]);
-
-        CategoriaNegocio::create([
-            'id' => 7,
-            'categoria' => 'Eventos'
         ]);
     }
 }
