@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
             }
         } else {
             return ResponseUtils::jsonResponse(400, [
-                'error' => $exception->getMessage()
+                'error' => $exception
             ]);
         }
     }
