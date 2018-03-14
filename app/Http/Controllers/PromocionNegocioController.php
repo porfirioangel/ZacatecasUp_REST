@@ -36,7 +36,7 @@ class PromocionNegocioController extends Controller
 
     public function obtenerPromocionesNegocio(Request $request) {
         $validator = Validator::make($request->all(), [
-            'negocio_id' => ['required', 'numeric', new NegocioExistente()],
+            'negocio_id' => ['required', 'numeric', new NegocioExistente],
         ]);
 
         if (!$validator->passes()) {

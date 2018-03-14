@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Usuario;
 use Illuminate\Http\Request;
+use Validator;
 
 class UsuarioController extends Controller
 {
@@ -23,12 +24,19 @@ class UsuarioController extends Controller
 
     public function login(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required'],
+            'password' => ['required']
+        ]);
+
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
         $email = $request['email'];
         $password = $request['password'];
-
-        if (!ResponseUtils::isRequiredParametersComplete([$email, $password])) {
-            return ResponseUtils::parametrosIncompletosResponse(['email', 'password']);
-        }
 
         $usuario = Usuario::where('email', '=', $email)->first();
 
@@ -68,18 +76,27 @@ class UsuarioController extends Controller
 
     public function registrarUsuario(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required'],
+            'password' => ['required'],
+            'nombre' => ['required'],
+            'sexo' => ['required'],
+            'fecha_nacimiento' => ['required'],
+            'tipo_usuario' => ['required'],
+        ]);
+
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
         $email = $request['email'];
         $password = $request['password'];
         $nombre = $request['nombre'];
         $sexo = $request['sexo'];
         $fecha_nacimiento = $request['fecha_nacimiento'];
         $tipo_usuario = $request['tipo_usuario'];
-
-        if (!ResponseUtils::isRequiredParametersComplete([$email, $password, $nombre,
-            $tipo_usuario, $sexo, $fecha_nacimiento])) {
-            return ResponseUtils::parametrosIncompletosResponse(['email', 'password',
-                'nombre', 'tipo_usuario', 'sexo', 'fecha_nacimiento']);
-        }
 
         $usuario = Usuario::where('email', '=', $email)->first();
 

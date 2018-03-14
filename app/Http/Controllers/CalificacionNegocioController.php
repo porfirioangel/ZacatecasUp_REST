@@ -19,7 +19,7 @@ class CalificacionNegocioController extends Controller
     public function calificarNegocio(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'usuario_id' => ['required', 'numeric', new UsuarioExistente()],
+            'usuario_id' => ['required', 'numeric', new UsuarioExistente],
             'negocio_id' => ['required', 'numeric', new NegocioExistente],
             'calificacion' => ['required', 'numeric'],
         ]);

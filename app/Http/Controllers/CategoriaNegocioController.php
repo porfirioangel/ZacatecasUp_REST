@@ -5,16 +5,23 @@ namespace App\Http\Controllers;
 use App\CategoriaNegocio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ResponseUtils;
+use Validator;
 
 class CategoriaNegocioController extends Controller
 {
     public function registrarCategoria(Request $request)
     {
-        $categoria = $request['categoria'];
+        $validator = Validator::make($request->all(), [
+            'categoria' => ['required']
+        ]);
 
-        if (!ResponseUtils::isRequiredParametersComplete([$categoria])) {
-            return ResponseUtils::parametrosIncompletosResponse(['categoria']);
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
         }
+
+        $categoria = $request['categoria'];
 
         // TODO Implementar la lógica de la petición
 

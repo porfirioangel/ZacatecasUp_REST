@@ -1,25 +1,35 @@
 <?php
 
-namespace App\Http\Controllers\DuenoNegocio;
+namespace App\Http\Controllers;
 
+use App\Http\Controllers\ResponseUtils;
+use App\Http\Validators\NegocioExistente;
+use App\Http\Validators\UsuarioExistente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class DuenoNegocioController extends Controller
 {
     public function agregarDueno(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'id_negocio' => ['required', new NegocioExistente],
+            'id_usuario' => ['required', new UsuarioExistente]
+        ]);
+
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
         $id_negocio = $request['id_negocio'];
         $id_usuario = $request['id_usuario'];
 
-        if (!Utils::isRequiredParametersComplete([$id_negocio, $id_usuario])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio',
-                'id_usuario']);
-        }
-
         // TODO Implementar la lógica de la petición
 
-        $duenoAgregadoResponse = Utils::jsonResponse(200, [
+        $duenoAgregadoResponse = ResponseUtils::jsonResponse(200, [
             'id_asignacion' => 1,
             'id_negocio' => $id_negocio,
             'id_usuario' => $id_usuario,
@@ -33,17 +43,23 @@ class DuenoNegocioController extends Controller
 
     public function removerDueno(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'id_negocio' => ['required', new NegocioExistente],
+            'id_usuario' => ['required', new UsuarioExistente]
+        ]);
+
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
         $id_negocio = $request['id_negocio'];
         $id_usuario = $request['id_usuario'];
 
-        if (!Utils::isRequiredParametersComplete([$id_negocio, $id_usuario])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio',
-                'id_usuario']);
-        }
-
         // TODO Implementar la lógica de la petición
 
-        $duenoRemovidoReponse = Utils::jsonResponse(200, [
+        $duenoRemovidoReponse = ResponseUtils::jsonResponse(200, [
             'id_asignacion' => 1
         ]);
 
@@ -54,15 +70,21 @@ class DuenoNegocioController extends Controller
 
     public function listarDuenos(Request $request)
     {
-        $id_negocio = $request['id_negocio'];
+        $validator = Validator::make($request->all(), [
+            'id_negocio' => ['required', new NegocioExistente]
+        ]);
 
-        if (!Utils::isRequiredParametersComplete([$id_negocio])) {
-            return Utils::parametrosIncompletosResponse(['id_negocio']);
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
         }
+
+        $id_negocio = $request['id_negocio'];
 
         // TODO Implementar la lógica de la petición
 
-        $propietariosResponse = Utils::jsonResponse(200, [
+        $propietariosResponse = ResponseUtils::jsonResponse(200, [
             [
                 'id' => 1,
                 'nombre' => 'Porfirio Ángel Díaz Sánchez'

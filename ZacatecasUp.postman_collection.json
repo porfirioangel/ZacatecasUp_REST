@@ -445,7 +445,7 @@
 					"urlencoded": [
 						{
 							"key": "id_negocio",
-							"value": "1",
+							"value": "3",
 							"description": "",
 							"type": "text"
 						},
@@ -765,18 +765,14 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://18.221.199.5/ZacatecasUp/ZacatecasUp_REST/public/obtener_categorias",
+					"raw": "http://localhost:8000/api/obtener_categorias",
 					"protocol": "http",
 					"host": [
-						"18",
-						"221",
-						"199",
-						"5"
+						"localhost"
 					],
+					"port": "8000",
 					"path": [
-						"ZacatecasUp",
-						"ZacatecasUp_REST",
-						"public",
+						"api",
 						"obtener_categorias"
 					]
 				},
@@ -838,7 +834,7 @@
 		{
 			"name": "Registrar categoría evento",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {},
 				"url": {
