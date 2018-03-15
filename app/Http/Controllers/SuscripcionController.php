@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Validators\NegocioExistente;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Validator;
 
 class SuscripcionController extends Controller
