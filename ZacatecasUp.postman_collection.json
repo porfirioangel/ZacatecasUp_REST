@@ -7,873 +7,999 @@
 	},
 	"item": [
 		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "porfirioads@gmail.com",
-							"description": "",
-							"type": "text"
+			"name": "Usuarios",
+			"description": "",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "porfirioads@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "holamundo",
+									"description": "",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "holamundo",
-							"description": "",
-							"type": "text"
-						}
-					]
+						"url": {
+							"raw": "http://18.219.193.113/ZacatecasUp/ZacatecasUp_REST/public/api/login",
+							"protocol": "http",
+							"host": [
+								"18",
+								"219",
+								"193",
+								"113"
+							],
+							"path": [
+								"ZacatecasUp",
+								"ZacatecasUp_REST",
+								"public",
+								"api",
+								"login"
+							]
+						},
+						"description": "ffwe rrfewf fewfwef  rwerwerewc fedfesad"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/api/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"login"
-					]
+				{
+					"name": "Registrar usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "porfirioads2ss@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "holamundo",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Porfirio Ángel Díaz Sánchez",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "tipo_usuario",
+									"value": "UsuarioNormal",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "sexo",
+									"value": "H",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fecha_nacimiento",
+									"value": "1990-03-30",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/registrar_usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"registrar_usuario"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"description": "ffwe rrfewf fewfwef  rwerwerewc fedfesad"
-			},
-			"response": []
+				{
+					"name": "Check Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/check_login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"check_login"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Registrar usuario",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "porfirioads2ss@gmail.com",
-							"description": "",
-							"type": "text"
+			"name": "Negocios",
+			"description": "",
+			"item": [
+				{
+					"name": "Registrar negocio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "Macdonnals",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "latitud",
+									"value": "100.000000",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "longitud",
+									"value": "100.000000",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion_breve",
+									"value": "Comida rápida muy rica",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion_completa",
+									"value": "{\"descripcion\":{\"tipo\":\"texto\",\"titulo\":\"Descripción\",\"contenido\":\"McDonald's es una cadena de restaurantes de rápida. Sus principales productos son las hamburguesas, papas fritas, los menús para el desayuno, los refrescos, batidos, los helados, los postres y, recientemente, ensaladas de fruta y otros productos exclusivos para países.\"},\"productos\":{\"tipo\":\"lista\",\"titulo\":\"Productos\",\"contenido\":[\"Hamburguesas\",\"Burritos\",\"Hot Dogs\"]}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "categoria_negocio_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "palabras_clave",
+									"value": "[\"Comida\", \"Hamburguesas\", \"Papas\", \"Grasa\"]",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "sitio_web",
+									"value": "http://www.macdonnals.com",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "facebook",
+									"value": "https://www.facebook.com/macdonnals",
+									"description": "",
+									"disabled": true
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "holamundo",
-							"description": "",
-							"type": "text"
+						"url": {
+							"raw": "http://localhost:8000/api/registrar_negocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"registrar_negocio"
+							]
 						},
-						{
-							"key": "nombre",
-							"value": "Porfirio Ángel Díaz Sánchez",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "tipo_usuario",
-							"value": "UsuarioNormal",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sexo",
-							"value": "H",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "fecha_nacimiento",
-							"value": "1990-03-30",
-							"description": "",
-							"type": "text"
-						}
-					]
+						"description": ""
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/api/registrar_usuario",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"registrar_usuario"
-					]
+				{
+					"name": "Actualizar negocio",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "5",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "sitio_web",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "facebook",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "latitud",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "longitud",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "descripcion_breve",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "descripcion_completa",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "categoria_negocio_id",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "palabras_clave",
+									"value": "",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/actualizar_negocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"actualizar_negocio"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Eliminar negocio",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/eliminar_negocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"eliminar_negocio"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Catálogo de negocios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/catalogo_negocios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogo_negocios"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Calificar negocio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "usuario_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "negocio_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "calificacion",
+									"value": "5",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/calificar_negocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"calificar_negocio"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Detalles negocio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/detalles_negocio?id_negocio=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"detalles_negocio"
+							],
+							"query": [
+								{
+									"key": "id_negocio",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar suscripción",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_negocio",
+									"value": "3",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fecha_fin",
+									"value": "2018-12-31",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "Premium",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/actualizar_suscripcion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"actualizar_suscripcion"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar recomendaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/buscar_recomendaciones?palabras_clave=cafetería comida hamburguesa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"buscar_recomendaciones"
+							],
+							"query": [
+								{
+									"key": "palabras_clave",
+									"value": "cafetería comida hamburguesa",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener comentarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/obtener_comentarios?negocio_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"obtener_comentarios"
+							],
+							"query": [
+								{
+									"key": "negocio_id",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar comentario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "usuario_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "negocio_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "comentario",
+									"value": "Hola a todos",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/agregar_comentario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"agregar_comentario"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Palabras clave",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/palabras_clave",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"palabras_clave"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Registrar categoría",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "categoria",
-							"value": "Memo",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"name": "Categorías de evento",
+			"description": "",
+			"item": [
+				{
+					"name": "Obtener categorías evento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/obtener_categorias_evento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"obtener_categorias_evento"
+							]
+						},
+						"description": null
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/api/registrar_categoria",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"registrar_categoria"
-					]
+				{
+					"name": "Registrar categoría evento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "categoria",
+									"value": "Concierto",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/registrar_categoria_evento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"registrar_categoria_evento"
+							]
+						},
+						"description": null
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Eliminar categoría evento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "5",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/eliminar_categoria_evento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"eliminar_categoria_evento"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Eliminar categoría",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"name": "Categorías de negocio",
+			"description": "",
+			"item": [
+				{
+					"name": "Obtener categorías_negocio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/api/obtener_categorias_negocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"obtener_categorias_negocio"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/api/eliminar_categoria",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"eliminar_categoria"
-					]
+				{
+					"name": "Registrar categoría negocio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "categoria",
+									"value": "Caféss",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/registrar_categoria_negocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"registrar_categoria_negocio"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Eliminar categoría negocio",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/eliminar_categoria_negocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"eliminar_categoria_negocio"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Catálogo de negocios",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/catalogo_negocios",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"catalogo_negocios"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Registrar negocio",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "nombre",
-							"value": "Macdonnals",
-							"description": "",
-							"type": "text"
+			"name": "Propietarios de negocio",
+			"description": "",
+			"item": [
+				{
+					"name": "Agregar propietario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_negocio",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "id_usuario",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "latitud",
-							"value": "100.000000",
-							"description": "",
-							"type": "text"
+						"url": {
+							"raw": "http://localhost:8000/api/agregar_propietario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"agregar_propietario"
+							]
 						},
-						{
-							"key": "longitud",
-							"value": "100.000000",
-							"description": "",
-							"type": "text"
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Remover propietario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_negocio",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "id_usuario",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "descripcion_breve",
-							"value": "Comida rápida muy rica",
-							"description": "",
-							"type": "text"
+						"url": {
+							"raw": "http://localhost:8000/api/remover_propietario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"remover_propietario"
+							]
 						},
-						{
-							"key": "descripcion_completa",
-							"value": "{\"descripcion\":{\"tipo\":\"texto\",\"titulo\":\"Descripción\",\"contenido\":\"McDonald's es una cadena de restaurantes de rápida. Sus principales productos son las hamburguesas, papas fritas, los menús para el desayuno, los refrescos, batidos, los helados, los postres y, recientemente, ensaladas de fruta y otros productos exclusivos para países.\"},\"productos\":{\"tipo\":\"lista\",\"titulo\":\"Productos\",\"contenido\":[\"Hamburguesas\",\"Burritos\",\"Hot Dogs\"]}",
-							"description": "",
-							"type": "text"
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Lista propietarios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_negocio",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "categoria_negocio_id",
-							"value": "1",
-							"description": "",
-							"type": "text"
+						"url": {
+							"raw": "http://localhost:8000/api/lista_propietarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lista_propietarios"
+							]
 						},
-						{
-							"key": "palabras_clave",
-							"value": "[\"Comida\", \"Hamburguesas\", \"Papas\", \"Grasa\"]",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sitio_web",
-							"value": "http://www.macdonnals.com",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "facebook",
-							"value": "https://www.facebook.com/macdonnals",
-							"description": "",
-							"disabled": true
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/registrar_negocio",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"registrar_negocio"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Actualizar negocio",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "5",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sitio_web",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "facebook",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "nombre",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "latitud",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "longitud",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "descripcion_breve",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "descripcion_completa",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "categoria_negocio_id",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "palabras_clave",
-							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/actualizar_negocio",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"actualizar_negocio"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar negocio",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "2",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/eliminar_negocio",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"eliminar_negocio"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Actualizar suscripción",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id_negocio",
-							"value": "3",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "fecha_fin",
-							"value": "2018-12-31",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "tipo",
-							"value": "Premium",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/actualizar_suscripcion",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"actualizar_suscripcion"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Agregar propietario",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id_negocio",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "id_usuario",
-							"value": "2",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/agregar_propietario",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"agregar_propietario"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Remover propietario",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id_negocio",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "id_usuario",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/remover_propietario",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"remover_propietario"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Lista propietarios",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id_negocio",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/lista_propietarios",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"lista_propietarios"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Calificar negocio",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "usuario_id",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "negocio_id",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "calificacion",
-							"value": "5",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/calificar_negocio",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"calificar_negocio"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Agregar comentario",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "usuario_id",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "negocio_id",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "comentario",
-							"value": "Hola a todos",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/agregar_comentario",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"agregar_comentario"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Buscar recomendaciones",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/buscar_recomendaciones?palabras_clave=cafetería comida hamburguesa",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"buscar_recomendaciones"
-					],
-					"query": [
-						{
-							"key": "palabras_clave",
-							"value": "cafetería comida hamburguesa",
-							"equals": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Detalles negocio",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/detalles_negocio?id_negocio=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"detalles_negocio"
-					],
-					"query": [
-						{
-							"key": "id_negocio",
-							"value": "1",
-							"equals": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener categorías",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/obtener_categorias",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"obtener_categorias"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Example",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/example",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"example"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener comentarios",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/obtener_comentarios?negocio_id=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"obtener_comentarios"
-					],
-					"query": [
-						{
-							"key": "negocio_id",
-							"value": "1",
-							"equals": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Registrar categoría evento",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/registrar_categoria_evento",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"registrar_categoria_evento"
-					]
-				},
-				"description": null
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener categorías evento",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/obtener_categorias_evento",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"obtener_categorias_evento"
-					]
-				},
-				"description": null
-			},
-			"response": []
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Obtener eventos",
@@ -923,50 +1049,6 @@
 					"path": [
 						"api",
 						"obtener_promociones"
-					]
-				},
-				"description": null
-			},
-			"response": []
-		},
-		{
-			"name": "Check Login",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/check_login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"check_login"
-					]
-				},
-				"description": null
-			},
-			"response": []
-		},
-		{
-			"name": "Logout",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/logout",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"logout"
 					]
 				},
 				"description": null
