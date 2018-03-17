@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\CategoriaNegocio;
+use App\Http\Validators\CategoriaNegocioUnica;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ResponseUtils;
 use Validator;
 
 class CategoriaNegocioController extends Controller
@@ -12,7 +12,7 @@ class CategoriaNegocioController extends Controller
     public function registrarCategoria(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'categoria' => ['required']
+            'categoria' => ['required', new CategoriaNegocioUnica]
         ]);
 
         if (!$validator->passes()) {
@@ -22,19 +22,11 @@ class CategoriaNegocioController extends Controller
         }
 
         $categoria = $request['categoria'];
+        $categoriaNegocio = new CategoriaNegocio();
+        $categoriaNegocio->categoria = $categoria;
+        $categoriaNegocio->save();
 
-        // TODO Implementar la lógica de la petición
-
-        $categoriaCreadaResponse = ResponseUtils::jsonResponse(200, [
-            'categoria' => $categoria
-        ]);
-
-        $categoriaExistenteResponse = ResponseUtils::jsonResponse(400, [
-            'error' => 'La categoría ya existe'
-        ]);
-
-        return $categoriaCreadaResponse;
-//        return $categoriaExistenteResponse;
+        return ResponseUtils::jsonResponse(200, $categoriaNegocio);
     }
 
     public function eliminarCategoria(Request $request)

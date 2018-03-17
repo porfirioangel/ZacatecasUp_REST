@@ -165,7 +165,7 @@ Route::get('detalles_negocio', 'NegocioController@detallesNegocio');
  * Verbo http: GET
  * -------------------------------------------------------------------------
 */
-Route::get('obtener_categorias', 'CategoriaNegocioController@obtenerCategorias');
+Route::get('obtener_categorias_negocio', 'CategoriaNegocioController@obtenerCategorias');
 
 /*
  * -------------------------------------------------------------------------
@@ -177,7 +177,7 @@ Route::get('obtener_categorias', 'CategoriaNegocioController@obtenerCategorias')
  *  categoria: Es el nombre de la categoría
  * -------------------------------------------------------------------------
 */
-Route::post('registrar_categoria', 'CategoriaNegocioController@registrarCategoria');
+Route::post('registrar_categoria_negocio', 'CategoriaNegocioController@registrarCategoria');
 
 /*
  * -------------------------------------------------------------------------
@@ -189,7 +189,7 @@ Route::post('registrar_categoria', 'CategoriaNegocioController@registrarCategori
  *  id
  * -------------------------------------------------------------------------
 */
-Route::delete('eliminar_categoria', 'CategoriaNegocioController@eliminarCategoria');
+Route::delete('eliminar_categoria_negocio', 'CategoriaNegocioController@eliminarCategoria');
 
 /*
 |--------------------------------------------------------------------------
