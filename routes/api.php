@@ -371,3 +371,18 @@ Route::get('obtener_eventos', 'EventoController@obtenerEventos');
  * -------------------------------------------------------------------------
 */
 Route::get('obtener_promociones', 'PromocionNegocioController@obtenerPromociones');
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de PalabraClaveController
+|--------------------------------------------------------------------------
+*/
+
+/*
+ * -------------------------------------------------------------------------
+ * Descripción: Obtiene el catálogo de palabras clave
+ * -------------------------------------------------------------------------
+ * Verbo http: GET
+ * -------------------------------------------------------------------------
+*/
+Route::get('palabras_clave', 'PalabraClaveController@getPalabrasClave');
