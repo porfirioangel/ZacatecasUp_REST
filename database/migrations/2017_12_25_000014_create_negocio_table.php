@@ -32,7 +32,7 @@ class CreateNegocioTable extends Migration
             $table->string('url_logo');
             $table->string('sitio_web', 100)->nullable();
             $table->string('facebook', 100)->nullable();
-            $table->integer('categoria_negocio_id')->unsigned();
+            $table->integer('categoria_negocio_id')->nullable()->unsigned();
             $table->integer('suscripcion_id')->unsigned();
 
             $table->index(["suscripcion_id"], 'fk_negocio_suscripcion1_idx');
@@ -46,7 +46,7 @@ class CreateNegocioTable extends Migration
 
             $table->foreign('categoria_negocio_id', 'fk_negocio_categoria_negocio1_idx')
                 ->references('id')->on('categoria_negocio')
-                ->onDelete('no action')
+                ->onDelete('set null')
                 ->onUpdate('no action');
 
             $table->foreign('suscripcion_id', 'fk_negocio_suscripcion1_idx')
