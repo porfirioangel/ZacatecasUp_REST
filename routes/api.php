@@ -169,7 +169,7 @@ Route::get('obtener_categorias_negocio', 'CategoriaNegocioController@obtenerCate
 
 /*
  * -------------------------------------------------------------------------
- * Descripción: Agrega una nueva categoría
+ * Descripción: Agrega una nueva categoría de negocio
  * -------------------------------------------------------------------------
  * Verbo http: POST
  * -------------------------------------------------------------------------
@@ -181,7 +181,7 @@ Route::post('registrar_categoria_negocio', 'CategoriaNegocioController@registrar
 
 /*
  * -------------------------------------------------------------------------
- * Descripción: Elimina una categoría
+ * Descripción: Elimina una categoría de negocio
  * -------------------------------------------------------------------------
  * Verbo http: DELETE
  * -------------------------------------------------------------------------
@@ -386,3 +386,42 @@ Route::get('obtener_promociones', 'PromocionNegocioController@obtenerPromociones
  * -------------------------------------------------------------------------
 */
 Route::get('palabras_clave', 'PalabraClaveController@getPalabrasClave');
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de CategoriaEventoController
+|--------------------------------------------------------------------------
+*/
+
+/*
+ * -------------------------------------------------------------------------
+ * Descripción: Obtiene las categorías de evento existentes
+ * -------------------------------------------------------------------------
+ * Verbo http: GET
+ * -------------------------------------------------------------------------
+*/
+Route::get('obtener_categorias_evento', 'CategoriaEventoController@obtenerCategorias');
+
+/*
+ * -------------------------------------------------------------------------
+ * Descripción: Agrega una nueva categoría de evento
+ * -------------------------------------------------------------------------
+ * Verbo http: POST
+ * -------------------------------------------------------------------------
+ * Parámetros:
+ *  categoria: Es el nombre de la categoría
+ * -------------------------------------------------------------------------
+*/
+Route::post('registrar_categoria_evento', 'CategoriaEventoController@registrarCategoria');
+
+/*
+ * -------------------------------------------------------------------------
+ * Descripción: Elimina una categoría de evento
+ * -------------------------------------------------------------------------
+ * Verbo http: DELETE
+ * -------------------------------------------------------------------------
+ * Parámetros:
+ *  id
+ * -------------------------------------------------------------------------
+*/
+Route::delete('eliminar_categoria_evento', 'CategoriaEventoController@eliminarCategoria');

@@ -32,13 +32,13 @@ class CreateEventoTable extends Migration
             $table->string('costo', 15);
             $table->string('descripcion', 500);
             $table->string('url_flyer', 255);
-            $table->integer('categoria_evento_id')->unsigned();
+            $table->integer('categoria_evento_id')->nullable()->unsigned();
 
             $table->index(["categoria_evento_id"], 'fk_evento_categoria_evento_idx');
 
             $table->foreign('categoria_evento_id', 'fk_evento_categoria_evento_idx')
                 ->references('id')->on('categoria_evento')
-                ->onDelete('no action')
+                ->onDelete('set null')
                 ->onUpdate('no action');
         });
     }

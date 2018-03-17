@@ -2,18 +2,18 @@
 
 namespace App\Http\Validators;
 
-use App\CategoriaNegocio;
+use App\CategoriaEvento;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
-class CategoriaNegocioUnica implements Rule
+class CategoriaEventoUnica implements Rule
 {
     /**
      * Determine if the validation rule passes.
      */
     public function passes($attribute, $value)
     {
-        $categoria = DB::table('categoria_negocio')
+        $categoria = DB::table('categoria_evento')
             ->select('categoria')
             ->where('categoria', '=', $value)
             ->first();
@@ -26,6 +26,6 @@ class CategoriaNegocioUnica implements Rule
      */
     public function message()
     {
-        return 'The :attribute of CategoriaNegocio must be unique';
+        return 'The :attribute of CategoriaEvento must be unique';
     }
 }
