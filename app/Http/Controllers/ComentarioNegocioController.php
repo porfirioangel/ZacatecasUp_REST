@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ComentarioNegocio;
+use App\Http\Validators\ComentarioNegocioExistente;
 use App\Http\Validators\NegocioExistente;
 use App\Http\Validators\UsuarioExistente;
 use App\Negocio;
@@ -71,7 +72,29 @@ class ComentarioNegocioController extends Controller
         }
 
         return ResponseUtils::jsonResponse(200, $comentarios);
-
     }
 
+    public function eliminarComentario(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id_comentario' => ['required', 'numeric', new
+            ComentarioNegocioExistente]
+        ]);
+
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
+        $comentario = ComentarioNegocio::find($request['id_comentario']);
+
+        try {
+            $comentario->delete();
+            return ResponseUtils::jsonResponse(200, $comentario);
+        } catch (\Exception $e) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => [$e->getMessage()]
+            ]);
+        }
+    }
 }

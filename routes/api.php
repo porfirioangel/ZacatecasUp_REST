@@ -310,6 +310,18 @@ Route::post('agregar_comentario', 'ComentarioNegocioController@agregarComentario
 Route::get('obtener_comentarios', 'ComentarioNegocioController@obtenerComentarios');
 
 /*
+ * -------------------------------------------------------------------------
+ * Descripción: Elimina el comentario de algún negocio
+ * -------------------------------------------------------------------------
+ * Verbo http: DELETE
+ * -------------------------------------------------------------------------
+ * Parámetros:
+ *  id_negocio
+ * -------------------------------------------------------------------------
+*/
+Route::delete('eliminar_comentario', 'ComentarioNegocioController@eliminarComentario');
+
+/*
 |--------------------------------------------------------------------------
 | Rutas de buscarRecomendaciones
 |--------------------------------------------------------------------------
