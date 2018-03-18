@@ -62,7 +62,7 @@ class CalificacionNegocioController extends Controller
     }
 
     /**
-     * Obtiene la calificación de un negocio
+     * Obtiene el promedio de las calificaciones de un negocio
      */
     public static function getCalificacionNegocio($idNegocio)
     {
