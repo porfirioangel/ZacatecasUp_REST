@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CategoriaNegocio;
 use App\EtiquetaNegocio;
+use App\Http\SessionUtils;
 use App\Negocio;
 use App\ComentarioNegocio;
 use App\Http\Validators\NegocioExistente;
@@ -21,29 +22,40 @@ class NegocioController extends Controller
      */
     public function getCatalogoNegocios(Request $request)
     {
-        // TODO Implementar la lógica de la petición
+        $sessionData = SessionUtils::getSessionData($request);
+        $usuarioId = $sessionData['usuario_id'];
+        $tipoUsuario = $sessionData['tipo_usuario'];
 
-        $negociosExistentesResponse = ResponseUtils::jsonResponse(200, [
-            [
-                'id' => 1,
-                'nombre' => 'Macdonnals',
-                'url_logo' => 'logos/logo_1.png',
-                'tipo_suscripcion' => 'Premium',
-                'fecha_fin_suscripcion' => '2017-12-01'
-            ],
-            [
-                'id' => 2,
-                'nombre' => 'KFC',
-                'url_logo' => 'logos/logo_1.png',
-                'tipo_suscripcion' => 'Básica',
-                'fecha_fin_suscripcion' => '2017-12-31'
-            ]
-        ]);
+        if (!$usuarioId) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => 'El usuario debe estar logueado'
+            ]);
+        }
 
-        $negociosInexistentesReponse = ResponseUtils::jsonResponse(200, []);
+        if ($tipoUsuario == 'UsuarioNormal') {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => 'El usuario debe ser de tipo "Administrador" o "DueñoNegocio"'
+            ]);
+        }
 
-        return $negociosExistentesResponse;
-//        return $negociosInexistentesReponse;
+        if ($tipoUsuario == 'Administrador') {
+            $negocios = DB::table('negocio as n')
+                ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
+                ->select(['n.id', 'n.nombre', 'n.url_logo',
+                    's.fecha_fin as fecha_fin_suscripcion',
+                    's.tipo as tipo_suscripcion'])
+                ->get();
+        } else {
+            $negocios = DB::table('negocio as n')
+                ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
+                ->join('dueno_negocio as dn', 'dn.usuario_id', '=', $usuarioId)
+                ->select(['n.id', 'n.nombre', 'n.url_logo',
+                    's.fecha_fin as fecha_fin_suscripcion',
+                    's.tipo as tipo_suscripcion'])
+                ->get();
+        }
+
+        return ResponseUtils::jsonResponse(200, $negocios);
     }
 
     /**

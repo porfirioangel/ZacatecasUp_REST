@@ -17,7 +17,6 @@
 |--------------------------------------------------------------------------
 */
 
-
 /*
  * -------------------------------------------------------------------------
  * Descripción: Registra un nuevo usuario en el sistema
@@ -35,9 +34,6 @@
 */
 Route::post('registrar_usuario', 'UsuarioController@registrarUsuario');
 
-/**
- * Grupo de rutas que requieren acceso a las sesiones de Laravel
- */
 Route::group(['middleware' => ['web']], function () {
     /*
      * -------------------------------------------------------------------------
@@ -78,14 +74,17 @@ Route::group(['middleware' => ['web']], function () {
 |--------------------------------------------------------------------------
 */
 
-/*
- * -------------------------------------------------------------------------
- * Descripción: Obtiene el catálogo de todos los negocios
- * -------------------------------------------------------------------------
- * Verbo http: POST
- * -------------------------------------------------------------------------
-*/
-Route::get('catalogo_negocios', 'NegocioController@getCatalogoNegocios');
+Route::group(['middleware' => ['web']], function () {
+    /*
+     * -------------------------------------------------------------------------
+     * Descripción: Obtiene el catálogo de todos los negocios
+     * -------------------------------------------------------------------------
+     * Verbo http: GET
+     * -------------------------------------------------------------------------
+    */
+    Route::get('catalogo_negocios', 'NegocioController@getCatalogoNegocios');
+});
+
 
 /*
  * -------------------------------------------------------------------------
