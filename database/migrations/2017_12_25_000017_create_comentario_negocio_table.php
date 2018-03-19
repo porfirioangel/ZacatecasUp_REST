@@ -36,12 +36,12 @@ class CreateComentarioNegocioTable extends Migration
 
             $table->foreign('usuario_id', 'fk_comentario_negocio_usuario1_idx')
                 ->references('id')->on('usuario')
-                ->onDelete('no action')
+                ->onDelete('cascade')
                 ->onUpdate('no action');
 
             $table->foreign('negocio_id', 'fk_comentario_negocio_negocio1_idx')
                 ->references('id')->on('negocio')
-                ->onDelete('no action')
+                ->onDelete('cascade')
                 ->onUpdate('no action');
         });
     }

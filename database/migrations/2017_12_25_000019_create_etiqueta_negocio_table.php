@@ -33,7 +33,7 @@ class CreateEtiquetaNegocioTable extends Migration
 
             $table->foreign('negocio_id', 'fk_etiquetas_negocio_negocio1_idx')
                 ->references('id')->on('negocio')
-                ->onDelete('no action')
+                ->onDelete('cascade')
                 ->onUpdate('no action');
 
             $table->foreign('palabra_clave_id', 'fk_etiquetas_negocio_palabra_clave1_idx')

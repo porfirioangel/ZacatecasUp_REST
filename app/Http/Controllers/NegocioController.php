@@ -117,7 +117,7 @@ class NegocioController extends Controller
         $valued_parameters = [];
 
         foreach ($all_parameters as $key => $value) {
-            if($value) {
+            if ($value) {
                 $valued_parameters[$key] = $value;
             }
         }
@@ -140,20 +140,26 @@ class NegocioController extends Controller
      */
     public function eliminarNegocio(Request $request)
     {
-        $id = $request['id'];
-
-        if (!ResponseUtils::isRequiredParametersComplete([$id])) {
-            return ResponseUtils::parametrosIncompletosResponse(['id']);
-        }
-
-        // TODO Implementar la lógica de la petición
-
-        $negocioEliminadoResponse = ResponseUtils::jsonResponse(200, [
-            'id' => $id
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric', new NegocioExistente],
         ]);
 
-        return $negocioEliminadoResponse;
-//        return ResponseUtils::negocioInexistenteResponse();
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
+        $negocio = Negocio::find($request['id']);
+
+        try {
+            $negocio->delete();
+            return ResponseUtils::jsonResponse(200, $negocio);
+        } catch (\Exception $e) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => [$e]
+            ]);
+        }
     }
 
 

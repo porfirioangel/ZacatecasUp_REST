@@ -31,10 +31,9 @@ class CreateGaleriaNegocioTable extends Migration
 
             $table->unique(["url_foto"], 'url_foto_UNIQUE');
 
-
             $table->foreign('negocio_id', 'fk_foto_establecimiento_negocio_idx')
                 ->references('id')->on('negocio')
-                ->onDelete('no action')
+                ->onDelete('cascade')
                 ->onUpdate('no action');
         });
     }
