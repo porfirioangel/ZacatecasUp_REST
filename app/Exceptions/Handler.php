@@ -70,11 +70,14 @@ class Handler extends ExceptionHandler
             $errors = [];
 
             foreach ($exception->getTrace() as $traceStep) {
-                array_push($errors, $traceStep['file'] . ': ' . $traceStep['line']);
+                array_push($errors, $traceStep);
             }
 
             return ResponseUtils::jsonResponse(400, [
-                'errors' => $errors
+                'errors' => [
+                    'excepcion' => $exception,
+                    'trace' => $errors
+                ]
             ]);
         }
     }

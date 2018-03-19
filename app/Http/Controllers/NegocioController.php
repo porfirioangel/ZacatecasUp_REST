@@ -92,37 +92,47 @@ class NegocioController extends Controller
      */
     public function actualizarNegocio(Request $request)
     {
-        // Parámetros obligatorios
-        $id = $request['id'];
-
-        // Parámetros opcionales
-        $sitio_web = $request['sitio_web'];
-        $facebook = $request['facebook'];
-        $nombre = $request['nombre'];
-        $latitud = $request['latitud'];
-        $longitud = $request['longitud'];
-        $descripcion_breve = $request['descripcion_breve'];
-        $descripcion_completa = $request['descripcion_completa'];
-        $categoria_negocio_id = $request['categoria_negocio_id'];
-        $palabras_clave = $request['palabras_clave'];
-
-        if (!ResponseUtils::isRequiredParametersComplete([$id])) {
-            return ResponseUtils::parametrosIncompletosResponse(['id']);
-        }
-
-        // TODO Implementar la lógica de la petición
-
-        $negocioActualizadoResponse = ResponseUtils::jsonResponse(200, [
-            'id' => $id,
-            'nombre' => 'Tacos la parrilla',
-            'url_logo' => 'logos/logo_3.png',
-            'tipo_suscripcion' => 'Básica',
-            'fecha_fin_suscripcion' => '31/12/2017'
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric', new NegocioExistente],
         ]);
 
-        return $negocioActualizadoResponse;
-//        return ResponseUtils::categoriaInexistenteResponse();
-//        return ResponseUtils::negocioInexistenteResponse();
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
+        $all_parameters = [
+            'sitio_web' => $request['sitio_web'],
+            'facebook' => $request['facebook'],
+            'nombre' => $request['nombre'],
+            'latitud' => $request['latitud'],
+            'longitud' => $request['longitud'],
+            'descripcion_breve' => $request['descripcion_breve'],
+            'descripcion_completa' => $request['descripcion_completa'],
+            'categoria_negocio_id' => $request['categoria_negocio_id'],
+            'palabras_clave' => $request['palabras_clave'],
+        ];
+
+        $valued_parameters = [];
+
+        foreach ($all_parameters as $key => $value) {
+            if($value) {
+                $valued_parameters[$key] = $value;
+            }
+        }
+
+        Negocio::find($request['id'])->update($valued_parameters);
+
+        $negocio = Negocio::find($request['id']);
+
+        return ResponseUtils::jsonResponse(200, [
+            'id' => $negocio->id,
+            'nombre' => $negocio->nombre,
+            'url_logo' => $negocio->url_logo,
+            'fecha_fin_suscripcion' => null,
+            'tipo_suscripcion' => null
+        ]);
     }
 
     /**
