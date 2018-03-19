@@ -21,9 +21,8 @@ class NegocioController extends Controller
      */
     public function getCatalogoNegocios(Request $request)
     {
-        // TODO obtener los datos del usuario
-        $usuarioId = 1;
-        $tipoUsuario = 'Administrador';
+        $usuarioId = $request['usuario_id'];
+        $tipoUsuario = $request['tipo_usuario'];
 
         if (!$usuarioId) {
             return ResponseUtils::jsonResponse(400, [
@@ -47,10 +46,11 @@ class NegocioController extends Controller
         } else {
             $negocios = DB::table('negocio as n')
                 ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
-                ->join('dueno_negocio as dn', 'dn.usuario_id', '=', $usuarioId)
+                ->join('dueno_negocio as dn', 'dn.negocio_id', '=', 'n.id')
                 ->select(['n.id', 'n.nombre', 'n.url_logo',
                     's.fecha_fin as fecha_fin_suscripcion',
                     's.tipo as tipo_suscripcion'])
+                ->where('dn.usuario_id', '=', $usuarioId)
                 ->get();
         }
 

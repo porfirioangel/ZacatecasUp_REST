@@ -35,10 +35,11 @@ class LoginRequired
             ->get()
             ->first();
 
-        if($login) {
-            $usuario = Usuario::where('token', '=', $token)
-                ->get()
-                ->first();
+        $usuario = Usuario::where('token', '=', $token)
+            ->get()
+            ->first();
+
+        if ($login && $usuario) {
             $request['usuario_id'] = $usuario->id;
             $request['tipo_usuario'] = $usuario->tipo;
             return $next($request);

@@ -25,7 +25,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "porfirioads@gmail.com",
+									"value": "haro@gmail.com",
 									"description": "",
 									"type": "text"
 								},
@@ -38,18 +38,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://18.219.193.113/ZacatecasUp/ZacatecasUp_REST/public/api/login",
+							"raw": "http://localhost:8000/api/login",
 							"protocol": "http",
 							"host": [
-								"18",
-								"219",
-								"193",
-								"113"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
-								"ZacatecasUp",
-								"ZacatecasUp_REST",
-								"public",
 								"api",
 								"login"
 							]
@@ -128,9 +123,24 @@
 				{
 					"name": "Check Login",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
 							"raw": "http://localhost:8000/api/check_login",
 							"protocol": "http",
@@ -150,9 +160,24 @@
 				{
 					"name": "Logout",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "c7ad05978463e13cfefa772dd92a3b5d3814013f",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
 							"raw": "http://localhost:8000/api/logout",
 							"protocol": "http",
@@ -237,6 +262,12 @@
 									"value": "https://www.facebook.com/macdonnals",
 									"description": "",
 									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -337,6 +368,12 @@
 									"description": "",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -374,6 +411,12 @@
 									"value": "2",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -396,9 +439,31 @@
 				{
 					"name": "Catálogo de negocios",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "dsafsafdsaasdsadasdsa",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
 						"url": {
 							"raw": "http://localhost:8000/api/catalogo_negocios",
 							"protocol": "http",
@@ -443,6 +508,12 @@
 								{
 									"key": "calificacion",
 									"value": "5",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
 									"description": "",
 									"type": "text"
 								}
@@ -521,6 +592,12 @@
 								{
 									"key": "tipo",
 									"value": "Premium",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
 									"description": "",
 									"type": "text"
 								}
@@ -630,6 +707,12 @@
 									"value": "Hola a todos",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -665,6 +748,49 @@
 							"path": [
 								"api",
 								"palabras_clave"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar comentario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_comentario",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/eliminar_comentario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"eliminar_comentario"
 							]
 						},
 						"description": ""
@@ -712,6 +838,12 @@
 									"value": "Concierto",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -747,6 +879,12 @@
 								{
 									"key": "id",
 									"value": "5",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
 									"description": "",
 									"type": "text"
 								}
@@ -814,6 +952,12 @@
 									"value": "Caféss",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -849,6 +993,12 @@
 								{
 									"key": "id",
 									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
 									"description": "",
 									"type": "text"
 								}
@@ -900,6 +1050,12 @@
 									"value": "2",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -943,6 +1099,12 @@
 									"value": "1",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
@@ -978,6 +1140,12 @@
 								{
 									"key": "id_negocio",
 									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
 									"description": "",
 									"type": "text"
 								}
