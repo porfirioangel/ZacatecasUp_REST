@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CategoriaNegocio;
 use App\EtiquetaNegocio;
+use App\Http\Validators\CategoriaNegocioExistente;
+use App\Http\Validators\NegocioUnico;
 use App\Negocio;
 use App\ComentarioNegocio;
 use App\Http\Validators\NegocioExistente;
@@ -26,15 +28,15 @@ class NegocioController extends Controller
 
         if ($tipoUsuario == 'Administrador') {
             $negocios = DB::table('negocio as n')
-                ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
+                ->leftJoin('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
                 ->select(['n.id', 'n.nombre', 'n.url_logo',
                     's.fecha_fin as fecha_fin_suscripcion',
                     's.tipo as tipo_suscripcion'])
                 ->get();
         } else {
             $negocios = DB::table('negocio as n')
-                ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
-                ->join('dueno_negocio as dn', 'dn.negocio_id', '=', 'n.id')
+                ->leftJoin('suscripcion as s', 's.id', '=', 'n.suscripcion_id')
+                ->leftJoin('dueno_negocio as dn', 'dn.negocio_id', '=', 'n.id')
                 ->select(['n.id', 'n.nombre', 'n.url_logo',
                     's.fecha_fin as fecha_fin_suscripcion',
                     's.tipo as tipo_suscripcion'])
@@ -50,42 +52,39 @@ class NegocioController extends Controller
      */
     public function registrarNegocio(Request $request)
     {
-        // Parámetros obligatorios
-        $nombre = $request['nombre'];
-        $latitud = $request['latitud'];
-        $longitud = $request['longitud'];
-        $descripcion_breve = $request['descripcion_breve'];
-        $descripcion_completa = $request['descripcion_completa'];
-        $categoria_negocio_id = $request['categoria_negocio_id'];
-        $palabras_clave = $request['palabras_clave'];
-
-        // Parámetros opcionales
-        $sitio_web = $request['sitio_web'];
-        $facebook = $request['facebook'];
-
-        if (!ResponseUtils::isRequiredParametersComplete([$nombre, $latitud,
-            $longitud, $descripcion_breve, $descripcion_completa,
-            $categoria_negocio_id, $palabras_clave])) {
-            return ResponseUtils::parametrosIncompletosResponse(['nombre', 'latitud',
-                'longitud', 'descripcion_breve', 'descripcion_completa',
-                'categoria_negocio_id', 'palabras_clave']);
-        }
-
-        // TODO Implementar la lógica de la petición
-        // Nombre logo '/uploads/' . sha1('logo_negocio' . $negocio->id)
-
-        $negocioRegistradoResponse = ResponseUtils::jsonResponse(200, [
-            'id' => 3,
-            'nombre' => 'Tacos la parrilla',
-            'url_logo' => 'logos/logo_3.png',
-            'tipo_suscripcion' => 'Básica',
-            'fecha_fin_suscripcion' => '31/12/2017'
+        $validator = Validator::make($request->all(), [
+            'nombre' => ['required', new NegocioUnico],
+            'latitud' => ['required', 'numeric'],
+            'longitud' => ['required', 'numeric'],
+            'descripcion_breve' => ['required'],
+            'descripcion_completa' => ['required'],
+            'categoria_negocio_id' => ['required', 'numeric', new CategoriaNegocioExistente],
+            'palabras_clave' => ['required'],
         ]);
 
-        // Nombre galeria: sha1('galeria_' . id_negocio . '_' . num_foto)
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
 
-        return $negocioRegistradoResponse;
-//        return ResponseUtils::categoriaInexistenteResponse();
+        try {
+            $negocio = Negocio::create($request->all());
+            $negocio->url_logo = sha1('logo_negocio' . $negocio->id);
+            $negocio->save();
+
+            return ResponseUtils::jsonResponse(200, [
+                'id' => $negocio->id,
+                'nombre' => $negocio->nombre,
+                'url_logo' => $negocio->url_logo,
+                'fecha_fin_suscripcion' => null,
+                'tipo_suscripcion' => null
+            ]);
+        } catch (\Exception $e) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => [$e]
+            ]);
+        }
     }
 
     /**

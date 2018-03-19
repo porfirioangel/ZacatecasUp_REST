@@ -20,7 +20,7 @@ class Negocio extends Model
     protected $fillable = [
         'nombre',
         'latitud',
-        'longuitud',
+        'longitud',
         'descripcion_breve',
         'descripcion_completa',
         'url_logo',

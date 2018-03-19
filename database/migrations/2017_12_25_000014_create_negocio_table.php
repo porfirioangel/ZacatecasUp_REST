@@ -29,11 +29,11 @@ class CreateNegocioTable extends Migration
             $table->decimal('longitud', 12, 8);
             $table->string('descripcion_breve', 200);
             $table->text('descripcion_completa');
-            $table->string('url_logo');
+            $table->string('url_logo')->nullable();
             $table->string('sitio_web', 100)->nullable();
             $table->string('facebook', 100)->nullable();
             $table->integer('categoria_negocio_id')->nullable()->unsigned();
-            $table->integer('suscripcion_id')->unsigned();
+            $table->integer('suscripcion_id')->unsigned()->nullable();
 
             $table->index(["suscripcion_id"], 'fk_negocio_suscripcion1_idx');
 
