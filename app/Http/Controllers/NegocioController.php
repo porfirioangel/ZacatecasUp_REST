@@ -24,18 +24,6 @@ class NegocioController extends Controller
         $usuarioId = $request['usuario_id'];
         $tipoUsuario = $request['tipo_usuario'];
 
-        if (!$usuarioId) {
-            return ResponseUtils::jsonResponse(400, [
-                'errors' => 'El usuario debe estar logueado'
-            ]);
-        }
-
-        if ($tipoUsuario == 'UsuarioNormal') {
-            return ResponseUtils::jsonResponse(400, [
-                'errors' => 'El usuario debe ser de tipo "Administrador" o "DueñoNegocio"'
-            ]);
-        }
-
         if ($tipoUsuario == 'Administrador') {
             $negocios = DB::table('negocio as n')
                 ->join('suscripcion as s', 's.id', '=', 'n.suscripcion_id')

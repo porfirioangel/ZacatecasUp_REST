@@ -41,7 +41,7 @@ class LoginRequired
 
         if ($login && $usuario) {
             $request['usuario_id'] = $usuario->id;
-            $request['tipo_usuario'] = $usuario->tipo;
+            $request['tipo_usuario'] = $usuario->tipo_usuario;
             return $next($request);
         } else {
             return ResponseUtils::jsonResponse(401, [
