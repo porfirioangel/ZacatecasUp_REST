@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\CategoriaNegocio;
 use App\EtiquetaNegocio;
-use App\Http\SessionUtils;
 use App\Negocio;
 use App\ComentarioNegocio;
 use App\Http\Validators\NegocioExistente;
@@ -22,9 +21,9 @@ class NegocioController extends Controller
      */
     public function getCatalogoNegocios(Request $request)
     {
-        $sessionData = SessionUtils::getSessionData($request);
-        $usuarioId = $sessionData['usuario_id'];
-        $tipoUsuario = $sessionData['tipo_usuario'];
+        // TODO obtener los datos del usuario
+        $usuarioId = 1;
+        $tipoUsuario = 'Administrador';
 
         if (!$usuarioId) {
             return ResponseUtils::jsonResponse(400, [
