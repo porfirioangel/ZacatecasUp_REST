@@ -131,7 +131,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -166,7 +166,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "c7ad05978463e13cfefa772dd92a3b5d3814013f",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -255,7 +255,7 @@
 								},
 								{
 									"key": "token",
-									"value": "02982f18f1ac53ac0df7a294535dca89f0927efa",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -356,7 +356,7 @@
 								},
 								{
 									"key": "token",
-									"value": "02db3969cd21aa6e814d6eb326da0777a124d6ee",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -397,7 +397,7 @@
 								},
 								{
 									"key": "token",
-									"value": "a1f2565188c5c939d91e61e1b7bf2135bbae5d2a",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -432,16 +432,9 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "83a14feea865ed67e39be05014bc3cc4a8292098",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
-								},
-								{
-									"key": "token",
-									"value": "dsafsafdsaasdsadasdsa",
-									"description": "",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -492,7 +485,7 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -572,7 +565,7 @@
 								},
 								{
 									"key": "token",
-									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -679,7 +672,7 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -740,7 +733,7 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -802,7 +795,7 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -843,7 +836,7 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -910,7 +903,7 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -951,7 +944,7 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -1004,7 +997,7 @@
 								},
 								{
 									"key": "token",
-									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -1051,7 +1044,7 @@
 								},
 								{
 									"key": "token",
-									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -1092,7 +1085,7 @@
 								},
 								{
 									"key": "token",
-									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								}
@@ -1153,7 +1146,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "95464d034d4d7053aaf696a4b617fe1d36eefdd4",
+									"value": "{{login_token}}",
 									"description": "",
 									"type": "text"
 								},
