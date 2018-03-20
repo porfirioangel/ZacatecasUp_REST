@@ -25,7 +25,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "haro@gmail.com",
+									"value": "porfirioads@gmail.com",
 									"description": "",
 									"type": "text"
 								},
@@ -38,12 +38,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/login",
-							"protocol": "http",
+							"raw": "{{host}}/api/login",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"login"
@@ -105,12 +103,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/registrar_usuario",
-							"protocol": "http",
+							"raw": "{{host}}/api/registrar_usuario",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"registrar_usuario"
@@ -142,12 +138,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/check_login",
-							"protocol": "http",
+							"raw": "{{host}}/api/check_login",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"check_login"
@@ -179,12 +173,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/logout",
-							"protocol": "http",
+							"raw": "{{host}}/api/logout",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"logout"
@@ -210,7 +202,7 @@
 							"formdata": [
 								{
 									"key": "nombre",
-									"value": "Macdonnals",
+									"value": "Macdonnalssaaaas",
 									"description": "",
 									"type": "text"
 								},
@@ -240,7 +232,7 @@
 								},
 								{
 									"key": "categoria_negocio_id",
-									"value": "1",
+									"value": "3",
 									"description": "",
 									"type": "text"
 								},
@@ -254,36 +246,32 @@
 									"key": "sitio_web",
 									"value": "http://www.macdonnals.com",
 									"description": "",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "facebook",
 									"value": "https://www.facebook.com/macdonnals",
-									"description": "",
-									"disabled": true
+									"description": ""
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "02982f18f1ac53ac0df7a294535dca89f0927efa",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/registrar_negocio",
-							"protocol": "http",
+							"raw": "{{host}}/api/registrar_negocio",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"registrar_negocio"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -322,24 +310,21 @@
 								},
 								{
 									"key": "nombre",
-									"value": "",
+									"value": "fdsfdsfdsfdsfdsfds",
 									"description": "",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "latitud",
-									"value": "",
+									"value": "101",
 									"description": "",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "longitud",
-									"value": "",
+									"value": "200",
 									"description": "",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "descripcion_breve",
@@ -371,25 +356,23 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "02db3969cd21aa6e814d6eb326da0777a124d6ee",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/actualizar_negocio",
-							"protocol": "http",
+							"raw": "{{host}}/api/actualizar_negocio",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"actualizar_negocio"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -414,25 +397,23 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "a1f2565188c5c939d91e61e1b7bf2135bbae5d2a",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/eliminar_negocio",
-							"protocol": "http",
+							"raw": "{{host}}/api/eliminar_negocio",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"eliminar_negocio"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -451,7 +432,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "83a14feea865ed67e39be05014bc3cc4a8292098",
 									"description": "",
 									"type": "text"
 								},
@@ -465,12 +446,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/catalogo_negocios",
-							"protocol": "http",
+							"raw": "{{host}}/api/catalogo_negocios",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"catalogo_negocios"
@@ -520,18 +499,16 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/calificar_negocio",
-							"protocol": "http",
+							"raw": "{{host}}/api/calificar_negocio",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"calificar_negocio"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -542,12 +519,10 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8000/api/detalles_negocio?id_negocio=1",
-							"protocol": "http",
+							"raw": "{{host}}/api/detalles_negocio?id_negocio=1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"detalles_negocio"
@@ -579,7 +554,7 @@
 							"urlencoded": [
 								{
 									"key": "id_negocio",
-									"value": "3",
+									"value": "4",
 									"description": "",
 									"type": "text"
 								},
@@ -597,25 +572,23 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/actualizar_suscripcion",
-							"protocol": "http",
+							"raw": "{{host}}/api/actualizar_suscripcion",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"actualizar_suscripcion"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -626,12 +599,10 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8000/api/buscar_recomendaciones?palabras_clave=cafetería comida hamburguesa",
-							"protocol": "http",
+							"raw": "{{host}}/api/buscar_recomendaciones?palabras_clave=cafetería comida hamburguesa",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"buscar_recomendaciones"
@@ -655,12 +626,10 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8000/api/obtener_comentarios?negocio_id=1",
-							"protocol": "http",
+							"raw": "{{host}}/api/obtener_comentarios?negocio_id=1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"obtener_comentarios"
@@ -717,18 +686,16 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/agregar_comentario",
-							"protocol": "http",
+							"raw": "{{host}}/api/agregar_comentario",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"agregar_comentario"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -739,12 +706,10 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8000/api/palabras_clave",
-							"protocol": "http",
+							"raw": "{{host}}/api/palabras_clave",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"palabras_clave"
@@ -782,12 +747,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/eliminar_comentario",
-							"protocol": "http",
+							"raw": "{{host}}/api/eliminar_comentario",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"eliminar_comentario"
@@ -810,12 +773,10 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8000/api/obtener_categorias_evento",
-							"protocol": "http",
+							"raw": "{{host}}/api/obtener_categorias_evento",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"obtener_categorias_evento"
@@ -848,12 +809,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/registrar_categoria_evento",
-							"protocol": "http",
+							"raw": "{{host}}/api/registrar_categoria_evento",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"registrar_categoria_evento"
@@ -891,12 +850,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/eliminar_categoria_evento",
-							"protocol": "http",
+							"raw": "{{host}}/api/eliminar_categoria_evento",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"eliminar_categoria_evento"
@@ -919,12 +876,10 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8000/api/obtener_categorias_negocio",
-							"protocol": "http",
+							"raw": "{{host}}/api/obtener_categorias_negocio",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"obtener_categorias_negocio"
@@ -962,12 +917,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/registrar_categoria_negocio",
-							"protocol": "http",
+							"raw": "{{host}}/api/registrar_categoria_negocio",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"registrar_categoria_negocio"
@@ -1005,12 +958,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/eliminar_categoria_negocio",
-							"protocol": "http",
+							"raw": "{{host}}/api/eliminar_categoria_negocio",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"eliminar_categoria_negocio"
@@ -1053,25 +1004,23 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/agregar_propietario",
-							"protocol": "http",
+							"raw": "{{host}}/api/agregar_propietario",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"agregar_propietario"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -1096,31 +1045,29 @@
 								},
 								{
 									"key": "id_usuario",
-									"value": "1",
+									"value": "3",
 									"description": "",
 									"type": "text"
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/remover_propietario",
-							"protocol": "http",
+							"raw": "{{host}}/api/remover_propietario",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"remover_propietario"
 							]
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -1145,22 +1092,117 @@
 								},
 								{
 									"key": "token",
-									"value": "7aa0dd61a6248802409496d74ce982f7df7f6323",
+									"value": "f22aad5fb6de7026d865b6cac428c92b72e22a34",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/lista_propietarios",
-							"protocol": "http",
+							"raw": "{{host}}/api/lista_propietarios",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"lista_propietarios"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"description": "",
+			"item": [
+				{
+					"name": "Obtener eventos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/obtener_eventos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"obtener_eventos"
+							]
+						},
+						"description": "Obtiene la lista de eventos disponibles para ser mostrados en la aplicación"
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar evento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "95464d034d4d7053aaf696a4b617fe1d36eefdd4",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Ejemplo de Evento",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fecha",
+									"value": "2018-04-10",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "latitud",
+									"value": "22.7680442",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "longitud",
+									"value": "-102.5814417",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "costo",
+									"value": "Gratuito",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url_flyer",
+									"value": "uploads/aa22d98a63e59cbbf4eaa14487c5dda3a6f0914b",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/agregar_evento",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"agregar_evento"
 							]
 						},
 						"description": ""
@@ -1168,28 +1210,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Obtener eventos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8000/api/obtener_eventos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"obtener_eventos"
-					]
-				},
-				"description": "Obtiene la lista de eventos disponibles para ser mostrados en la aplicación"
-			},
-			"response": []
 		},
 		{
 			"name": "Obtener promociones",
@@ -1208,12 +1228,10 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/obtener_promociones",
-					"protocol": "http",
+					"raw": "{{host}}/api/obtener_promociones",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"obtener_promociones"
