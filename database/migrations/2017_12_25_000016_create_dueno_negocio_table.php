@@ -23,13 +23,12 @@ class CreateDuenoNegocioTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
+            $table->increments('id');
             $table->integer('usuario_id')->unsigned();;
             $table->integer('negocio_id')->unsigned();;
 
             $table->index(["negocio_id"], 'fk_dueno_negocio_negocio1_idx');
-
             $table->index(["usuario_id"], 'fk_dueno_negocio_usuario1_idx');
-
 
             $table->foreign('usuario_id', 'fk_dueno_negocio_usuario1_idx')
                 ->references('id')->on('usuario')

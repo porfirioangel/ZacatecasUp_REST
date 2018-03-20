@@ -12,6 +12,7 @@ class DuenoNegocio extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id',
         'usuario_id',
         'negocio_id',
     ];
