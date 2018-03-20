@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Validators\NegocioExistente;
+use App\Negocio;
+use App\Suscripcion;
+use DateTime;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -26,15 +29,35 @@ class SuscripcionController extends Controller
         $fecha_fin = $request['fecha_fin'];
         $tipo = $request['tipo'];
 
-        // TODO Implementar la lógica de la petición
+        $negocio = Negocio::find($id_negocio);
 
-        $suscripcionActualizadaResponse = ResponseUtils::jsonResponse(200, [
-            'id_negocio' => $id_negocio,
-            'fecha_fin' => $fecha_fin,
-            'tipo' => $tipo
-        ]);
+        if($negocio->suscripcion_id) {
+            $suscripcion = Suscripcion::find($negocio->suscripcion_id);
+        } else {
+            $suscripcion = new Suscripcion();
+        }
 
-        return $suscripcionActualizadaResponse;
-//        return ResponseUtils::negocioInexistenteResponse();
+        $date = new DateTime();
+
+        $suscripcion->fecha_inicio = $date->format('Y-m-d');
+        $suscripcion->fecha_fin = $fecha_fin;
+        $suscripcion->tipo = $tipo;
+
+        try {
+            $suscripcion->save();
+            $negocio->suscripcion_id = $suscripcion->id;
+            $negocio->save();
+            return ResponseUtils::jsonResponse(200, [
+                'id' => $suscripcion->id,
+                'fecha_inicio' => $suscripcion->fecha_inicio,
+                'fecha_fin' => $suscripcion->fecha_fin,
+                'tipo' => $suscripcion->tipo,
+                'id_negocio' => $negocio->id
+            ]);
+        } catch (\Exception $e) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => [$e]
+            ]);
+        }
     }
 }
