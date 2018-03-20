@@ -24,12 +24,7 @@ class CategoriaEventoTableSeeder extends Seeder
 
         CategoriaEvento::create([
             'id' => 3,
-            'categoria' => 'Pintura'
-        ]);
-
-        CategoriaEvento::create([
-            'id' => 4,
-            'categoria' => 'Baile'
+            'categoria' => 'Danza'
         ]);
     }
 }
