@@ -25,12 +25,10 @@ class CreateEventoTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre', 100);
-            $table->dateTime('fecha_inicio');
-            $table->dateTime('fecha_fin');
+            $table->dateTime('fecha');
             $table->decimal('latitud', 12, 8);
             $table->decimal('longitud', 12, 8);
             $table->string('costo', 15);
-            $table->string('descripcion', 500);
             $table->string('url_flyer', 255);
             $table->integer('categoria_evento_id')->nullable()->unsigned();
 

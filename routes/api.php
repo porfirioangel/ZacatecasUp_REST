@@ -218,6 +218,15 @@ Route::group(['middleware' => ['login_required']], function () {
      * -------------------------------------------------------------------------
     */
     Route::delete('eliminar_categoria_evento', 'CategoriaEventoController@eliminarCategoria');
+
+    /*
+     * -------------------------------------------------------------------------
+     * Descripción: Agrega un nuevo evento
+     * -------------------------------------------------------------------------
+     * Verbo http: POST
+     * -------------------------------------------------------------------------
+    */
+    Route::post('agregar_evento', 'EventoController@agregarEvento');
 });
 
 /*

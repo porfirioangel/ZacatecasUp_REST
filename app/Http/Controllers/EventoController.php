@@ -7,6 +7,7 @@ use App\Evento;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Validator;
 
 class EventoController extends Controller
 {
@@ -29,5 +30,26 @@ class EventoController extends Controller
         }
         
         return ResponseUtils::jsonResponse(200, $eventos);
+    }
+
+    public function agregarEvento(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'nombre' => ['required'],
+            'fecha' => ['required'],
+            'latitud' => ['required', 'numeric'],
+            'longitud' => ['required', 'numeric'],
+            'costo' => ['required'],
+            'url_flyer' => ['required', 'max:255'],
+        ]);
+
+        if (!$validator->passes()) {
+            return ResponseUtils::jsonResponse(400, [
+                'errors' => $validator->errors()->all()
+            ]);
+        }
+
+        $evento = Evento::create($request->all());
+
+        return ResponseUtils::jsonResponse(200, $evento);
     }
 }

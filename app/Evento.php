@@ -11,11 +11,9 @@ class Evento extends Model
 
     protected $fillable = [
         'nombre',
-        'fecha_inicio',
-        'fecha_fin',
+        'fecha',
         'latitud',
-        'longuitud',
-        'descripcion',
+        'longitud',
         'costo',
         'url_flyer',
         'categoria_evento_id',
