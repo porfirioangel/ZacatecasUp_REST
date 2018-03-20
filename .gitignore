@@ -40,6 +40,9 @@
 !/public/uploads/1667be4daa675e7a36b0ebe62119d4d135257ac2
 !/public/uploads/898b399df40634889149d52309b12711e8da8c7a
 !/public/uploads/1d86ef94442824dd8cbe28796fad374aa0174879
+# Ecluye pdf de festival cultural
+!/public/uploads/Festival Cultural Zacatecas 2018.pdf
+
 /public/log
 /storage/*.key
 /vendor
