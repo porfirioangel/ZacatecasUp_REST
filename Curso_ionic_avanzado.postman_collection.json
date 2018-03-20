@@ -1,0 +1,439 @@
+{
+	"info": {
+		"name": "Curso_ionic_avanzado",
+		"_postman_id": "8fdd0d46-c626-f62d-c7de-b7c35f32260f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all places",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/places",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"places"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get place by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/places/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"places",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Insert place",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Jardín Principal",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "latitud",
+							"value": "22.6535975",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "longitud",
+							"value": "-102.9838565",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/places",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"places"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update place",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Marco",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "latitud",
+							"value": "22.6535975",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "longitud",
+							"value": "-102.9838565",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/places/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"places",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete place",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/places/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"places",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"usuario"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get usuario by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/usuario/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"usuario",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Insert usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Porfirio",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ap_paterno",
+							"value": "Díaz",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ap_materno",
+							"value": "Sánchez",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "telefono",
+							"value": "4949428616",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "porfirioads@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "holamundo",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "edad",
+							"value": "20",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "Zacatecas",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "municipio",
+							"value": "Jerez",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"usuario"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update usuario",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Pedro",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ap_paterno",
+							"value": "Moralez",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ap_materno",
+							"value": "Salas",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "telefono",
+							"value": "4949428615",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "pedroms@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "holamundo",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "edad",
+							"value": "21",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "Aguascalientes",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "municipio",
+							"value": "Aguascalientes",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/usuario/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"usuario",
+						"4"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/usuario/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"usuario",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "porfirioads@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "holamundo",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
