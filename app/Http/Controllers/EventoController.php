@@ -16,7 +16,7 @@ class EventoController extends Controller
         // TODO Determine which past events will be filtered
 
         $eventos = DB::table('evento')
-            ->orderBy('fecha_inicio')
+            ->orderBy('fecha')
             ->get();
 
         foreach ($eventos as $evento) {
