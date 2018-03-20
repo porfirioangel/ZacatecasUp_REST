@@ -9,6 +9,7 @@ use App\Http\Validators\UsuarioExistente;
 use App\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class DuenoNegocioController extends Controller
@@ -34,7 +35,7 @@ class DuenoNegocioController extends Controller
             ->get()
             ->first();
 
-        if(!$asignacion) {
+        if (!$asignacion) {
             $asignacion = new DuenoNegocio();
             $asignacion->usuario_id = $id_usuario;
             $asignacion->negocio_id = $id_negocio;
@@ -78,7 +79,7 @@ class DuenoNegocioController extends Controller
             ->get()
             ->first();
 
-        if($asignacion) {
+        if ($asignacion) {
             $asignacion->delete();
             return ResponseUtils::jsonResponse(200, [
                 'message' => 'La asignación de dueño fue removida'
@@ -93,7 +94,7 @@ class DuenoNegocioController extends Controller
     public function listarDuenos(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_negocio' => ['required', new NegocioExistente]
+            'id_negocio' => ['required', 'numeric', new NegocioExistente]
         ]);
 
         if (!$validator->passes()) {
@@ -104,21 +105,12 @@ class DuenoNegocioController extends Controller
 
         $id_negocio = $request['id_negocio'];
 
-        // TODO Implementar la lógica de la petición
+        $propietarios = DB::table('usuario as u')
+            ->join('dueno_negocio as dn', 'dn.usuario_id', '=', 'u.id')
+            ->where('dn.negocio_id', '=', $id_negocio)
+            ->select(['u.id', 'u.nombre'])
+            ->get();
 
-        $propietariosResponse = ResponseUtils::jsonResponse(200, [
-            [
-                'id' => 1,
-                'nombre' => 'Porfirio Ángel Díaz Sánchez'
-            ],
-            [
-                'id' => 2,
-                'nombre' => 'Porfirio Ángel Díaz Sánchez'
-            ]
-        ]);
-
-        return $propietariosResponse;
-//        return ResponseUtils::jsonResponse(200, []);
-//        return ResponseUtils::negocioInexistenteResponse();
+        return ResponseUtils::jsonResponse(200, $propietarios);
     }
 }
