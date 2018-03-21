@@ -306,6 +306,15 @@ Route::get('obtener_categorias_negocio', 'CategoriaNegocioController@obtenerCate
 
 /*
  * -------------------------------------------------------------------------
+ * Descripción: Obtiene las categorías de negocio existentes con sus ids
+ * -------------------------------------------------------------------------
+ * Verbo http: GET
+ * -------------------------------------------------------------------------
+*/
+Route::get('obtener_categorias_negocio_ids', 'CategoriaNegocioController@obtenerCategoriasWithIds');
+
+/*
+ * -------------------------------------------------------------------------
  * Descripción: Obtiene los comentarios de un negocio
  * -------------------------------------------------------------------------
  * Verbo http: GET

@@ -24,6 +24,12 @@ class CategoriaNegocioController extends Controller
         return ResponseUtils::jsonResponse(200, $categoriaNames);
     }
 
+    public function obtenerCategoriasWithIds()
+    {
+        $categorias = CategoriaNegocio::all();
+        return ResponseUtils::jsonResponse(200, $categorias);
+    }
+
     public function registrarCategoria(Request $request)
     {
         $validator = Validator::make($request->all(), [
