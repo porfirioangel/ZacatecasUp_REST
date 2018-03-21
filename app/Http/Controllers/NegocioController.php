@@ -190,7 +190,6 @@ class NegocioController extends Controller
         $detallesResponse = array_merge([], $negocio);
         $detallesResponse['logotipo'] = $detallesResponse['url_logo'];
         unset($detallesResponse['url_logo']);
-        unset($detallesResponse['categoria_negocio_id']);
         unset($detallesResponse['suscripcion_id']);
         $detallesResponse['categoria'] = $categoria->categoria;
         $detallesResponse['calificacion'] =
