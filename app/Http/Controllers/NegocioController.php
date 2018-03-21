@@ -78,7 +78,12 @@ class NegocioController extends Controller
                 'nombre' => $negocio->nombre,
                 'url_logo' => $negocio->url_logo,
                 'fecha_fin_suscripcion' => null,
-                'tipo_suscripcion' => null
+                'tipo_suscripcion' => null,
+                'galeria' => [
+                    sha1('galeria_' . $negocio->id . '_1'),
+                    sha1('galeria_' . $negocio->id . '_2'),
+                    sha1('galeria_' . $negocio->id . '_3')
+                ]
             ]);
         } catch (\Exception $e) {
             return ResponseUtils::jsonResponse(400, [
