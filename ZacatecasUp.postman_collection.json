@@ -66,7 +66,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "porfirioads2ss@gmail.com",
+									"value": "porfirioads2ss@gmail.coms",
 									"description": "",
 									"type": "text"
 								},
@@ -958,6 +958,26 @@
 							"path": [
 								"api",
 								"eliminar_categoria_negocio"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener categorías de negocio con ids",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/obtener_categorias_negocio_ids",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"obtener_categorias_negocio_ids"
 							]
 						},
 						"description": ""
