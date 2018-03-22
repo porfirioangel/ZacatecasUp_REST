@@ -70,8 +70,6 @@ class NegocioController extends Controller
         }
 
         try {
-            $palabrasClave = json_decode($request['palabras_clave']);
-            return $this->getPalabrasClaveInstances($palabrasClave);
 
             $negocio = Negocio::create($request->all());
             $negocio->url_logo = '/uploads/' . sha1('logo_negocio' .
@@ -84,6 +82,16 @@ class NegocioController extends Controller
                         $negocio->id . '_' . $i);
                 $galeria->negocio_id = $negocio->id;
                 $galeria->save();
+            }
+
+            $palabrasClave = json_decode($request['palabras_clave']);
+            $palabrasClave = $this->getPalabrasClaveInstances($palabrasClave);
+
+            foreach ($palabrasClave as $palabraClave) {
+                $etiquetaNegocio = new EtiquetaNegocio();
+                $etiquetaNegocio->negocio_id = $negocio->id;
+                $etiquetaNegocio->palabra_clave_id = $palabraClave->id;
+                $etiquetaNegocio->save();
             }
 
             return ResponseUtils::jsonResponse(200, [
