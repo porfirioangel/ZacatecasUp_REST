@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CategoriaNegocio;
 use App\EtiquetaNegocio;
+use App\GaleriaNegocio;
 use App\Http\Validators\CategoriaNegocioExistente;
 use App\Http\Validators\NegocioUnico;
 use App\Negocio;
@@ -71,8 +72,16 @@ class NegocioController extends Controller
         try {
             $negocio = Negocio::create($request->all());
             $negocio->url_logo = '/uploads/' . sha1('logo_negocio' .
-                $negocio->id);
+                    $negocio->id);
             $negocio->save();
+
+            for ($i = 1; $i <= 3; $i++) {
+                $galeria = new GaleriaNegocio();
+                $galeria->url_foto = sha1('/uploads/galeria_' . $negocio->id
+                    . '_' . $i);
+                $galeria->negocio_id = $negocio->id;
+                $galeria->save();
+            }
 
             return ResponseUtils::jsonResponse(200, [
                 'id' => $negocio->id,
