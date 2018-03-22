@@ -77,8 +77,8 @@ class NegocioController extends Controller
 
             for ($i = 1; $i <= 3; $i++) {
                 $galeria = new GaleriaNegocio();
-                $galeria->url_foto = sha1('/uploads/galeria_' . $negocio->id
-                    . '_' . $i);
+                $galeria->url_foto = '/uploads/' . sha1('galeria_' .
+                        $negocio->id . '_' . $i);
                 $galeria->negocio_id = $negocio->id;
                 $galeria->save();
             }
