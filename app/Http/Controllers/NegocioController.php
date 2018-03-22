@@ -70,7 +70,8 @@ class NegocioController extends Controller
 
         try {
             $negocio = Negocio::create($request->all());
-            $negocio->url_logo = sha1('logo_negocio' . $negocio->id);
+            $negocio->url_logo = '/uploads/' . sha1('logo_negocio' .
+                $negocio->id);
             $negocio->save();
 
             return ResponseUtils::jsonResponse(200, [
@@ -126,6 +127,8 @@ class NegocioController extends Controller
                 $valued_parameters[$key] = $value;
             }
         }
+
+        return $valued_parameters;
 
         Negocio::find($request['id'])->update($valued_parameters);
 
