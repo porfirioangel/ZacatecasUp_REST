@@ -70,6 +70,9 @@ class NegocioController extends Controller
         }
 
         try {
+            $palabrasClave = json_decode($request['palabras_clave']);
+            return $this->getPalabrasClaveInstances($palabrasClave);
+
             $negocio = Negocio::create($request->all());
             $negocio->url_logo = '/uploads/' . sha1('logo_negocio' .
                     $negocio->id);
@@ -153,96 +156,132 @@ class NegocioController extends Controller
     }
 
     /**
-     * Elimina un negocio existente
+     * A partir de las palabras clave en el array recibido como parámetro,
+     * inserta en la base de datos aquellas que aún no lo estén, y devuelve
+     * un array con la palabra clave y su id en la base de datos.
      */
-    public function eliminarNegocio(Request $request)
+    public function getPalabrasClaveInstances($palabrasClaveArray)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => ['required', 'numeric', new NegocioExistente],
-        ]);
+        $palabrasClaveDb = [];
 
-        if (!$validator->passes()) {
-            return ResponseUtils::jsonResponse(400, [
-                'errors' => $validator->errors()->all()
-            ]);
+        foreach ($palabrasClaveArray as $palabra) {
+            $palabraClave = PalabraClave::where('keyword', '=', $palabra)
+                ->get()
+                ->first();
+
+            if ($palabraClave) {
+                array_push($palabrasClaveDb, $palabraClave);
+            } else {
+                $palabraClave = new PalabraClave();
+                $palabraClave->keyword = $palabra;
+
+                try {
+                    $palabraClave->save();
+                    array_push($palabrasClaveDb, $palabraClave);
+                } catch (\Exception $e) {
+                    return ResponseUtils::jsonResponse(400, [
+                        'errors' => ['Error del servidor']
+                    ]);
+                }
+            }
         }
 
-        $negocio = Negocio::find($request['id']);
-
-        try {
-            $negocio->delete();
-            return ResponseUtils::jsonResponse(200, $negocio);
-        } catch (\Exception $e) {
-            return ResponseUtils::jsonResponse(400, [
-                'errors' => [$e]
-            ]);
-        }
+        return $palabrasClaveDb;
     }
 
+/**
+ * Elimina un negocio existente
+ */
+public
+function eliminarNegocio(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id' => ['required', 'numeric', new NegocioExistente],
+    ]);
 
-    /**
-     * Obtiene los detalles de un negocio
-     */
-    public function detallesNegocio(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'id_negocio' => ['required', 'numeric', new NegocioExistente],
+    if (!$validator->passes()) {
+        return ResponseUtils::jsonResponse(400, [
+            'errors' => $validator->errors()->all()
         ]);
-
-        if (!$validator->passes()) {
-            return ResponseUtils::jsonResponse(400, [
-                'errors' => $validator->errors()->all()
-            ]);
-        }
-
-        $negocio = Negocio::find($request['id_negocio'])->toArray();
-
-        $categoria = CategoriaNegocio::find($negocio['categoria_negocio_id']);
-
-        $detallesResponse = array_merge([], $negocio);
-        $detallesResponse['logotipo'] = $detallesResponse['url_logo'];
-        unset($detallesResponse['url_logo']);
-        unset($detallesResponse['suscripcion_id']);
-        $detallesResponse['categoria'] = $categoria->categoria;
-        $detallesResponse['calificacion'] =
-            CalificacionNegocioController::getCalificacionNegocio($negocio['id']);
-
-        $palabrasClave = DB::table('palabra_clave')
-            ->join('etiqueta_negocio', 'palabra_clave.id', '=',
-                'etiqueta_negocio.palabra_clave_id')
-            ->where('etiqueta_negocio.negocio_id', '=', $negocio['id'])
-            ->select('palabra_clave.keyword')->get();
-
-        $detallesResponse['palabras_clave'] = [];
-
-        foreach ($palabrasClave as $palabra) {
-            array_push($detallesResponse['palabras_clave'], $palabra->keyword);
-        }
-
-        $comentarios = DB::table('comentario_negocio as cm')
-            ->join('usuario as u', 'u.id', '=', 'cm.usuario_id')
-            ->where('negocio_id', '=', $negocio['id'])
-            ->count();
-
-        $detallesResponse['comentarios'] = $comentarios;
-
-        $galeria = DB::table('galeria_negocio as gn')
-            ->where('gn.negocio_id', '=', $negocio['id'])
-            ->select('url_foto')
-            ->get();
-
-        $detallesResponse['galeria'] = [];
-
-        foreach ($galeria as $foto) {
-            array_push($detallesResponse['galeria'], $foto->url_foto);
-        }
-
-        $descripcionCompleta = json_decode($negocio['descripcion_completa'],
-            true);
-
-        $detallesResponse['descripcion_completa'] = $descripcionCompleta;
-
-        return ResponseUtils::jsonResponse(200, $detallesResponse);
     }
+
+    $negocio = Negocio::find($request['id']);
+
+    try {
+        $negocio->delete();
+        return ResponseUtils::jsonResponse(200, $negocio);
+    } catch (\Exception $e) {
+        return ResponseUtils::jsonResponse(400, [
+            'errors' => [$e]
+        ]);
+    }
+}
+
+
+/**
+ * Obtiene los detalles de un negocio
+ */
+public
+function detallesNegocio(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id_negocio' => ['required', 'numeric', new NegocioExistente],
+    ]);
+
+    if (!$validator->passes()) {
+        return ResponseUtils::jsonResponse(400, [
+            'errors' => $validator->errors()->all()
+        ]);
+    }
+
+    $negocio = Negocio::find($request['id_negocio'])->toArray();
+
+    $categoria = CategoriaNegocio::find($negocio['categoria_negocio_id']);
+
+    $detallesResponse = array_merge([], $negocio);
+    $detallesResponse['logotipo'] = $detallesResponse['url_logo'];
+    unset($detallesResponse['url_logo']);
+    unset($detallesResponse['suscripcion_id']);
+    $detallesResponse['categoria'] = $categoria->categoria;
+    $detallesResponse['calificacion'] =
+        CalificacionNegocioController::getCalificacionNegocio($negocio['id']);
+
+    $palabrasClave = DB::table('palabra_clave')
+        ->join('etiqueta_negocio', 'palabra_clave.id', '=',
+            'etiqueta_negocio.palabra_clave_id')
+        ->where('etiqueta_negocio.negocio_id', '=', $negocio['id'])
+        ->select('palabra_clave.keyword')->get();
+
+    $detallesResponse['palabras_clave'] = [];
+
+    foreach ($palabrasClave as $palabra) {
+        array_push($detallesResponse['palabras_clave'], $palabra->keyword);
+    }
+
+    $comentarios = DB::table('comentario_negocio as cm')
+        ->join('usuario as u', 'u.id', '=', 'cm.usuario_id')
+        ->where('negocio_id', '=', $negocio['id'])
+        ->count();
+
+    $detallesResponse['comentarios'] = $comentarios;
+
+    $galeria = DB::table('galeria_negocio as gn')
+        ->where('gn.negocio_id', '=', $negocio['id'])
+        ->select('url_foto')
+        ->get();
+
+    $detallesResponse['galeria'] = [];
+
+    foreach ($galeria as $foto) {
+        array_push($detallesResponse['galeria'], $foto->url_foto);
+    }
+
+    $descripcionCompleta = json_decode($negocio['descripcion_completa'],
+        true);
+
+    $detallesResponse['descripcion_completa'] = $descripcionCompleta;
+
+    return ResponseUtils::jsonResponse(200, $detallesResponse);
+}
 
 }
