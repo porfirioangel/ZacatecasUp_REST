@@ -148,9 +148,19 @@ class NegocioController extends Controller
             }
         }
 
-        return $valued_parameters;
+        $negocioId = $request['id'];
+        Negocio::find($negocioId)->update($valued_parameters);
 
-        Negocio::find($request['id'])->update($valued_parameters);
+        EtiquetaNegocio::where('negocio_id', '=', $negocioId)->delete();
+        $palabrasClave = json_decode($request['palabras_clave']);
+        $palabrasClave = $this->getPalabrasClaveInstances($palabrasClave);
+
+        foreach ($palabrasClave as $palabraClave) {
+            $etiquetaNegocio = new EtiquetaNegocio();
+            $etiquetaNegocio->negocio_id = $negocioId;
+            $etiquetaNegocio->palabra_clave_id = $palabraClave->id;
+            $etiquetaNegocio->save();
+        }
 
         $negocio = Negocio::find($request['id']);
 
