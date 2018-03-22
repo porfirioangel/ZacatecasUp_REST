@@ -187,7 +187,8 @@ class UsuarioController extends Controller
             'usuario_id' => $usuario->id,
             'tipo_usuario' => $usuario->tipo_usuario,
             'profile_photo' => $usuario->profile_photo,
-            'token' => $usuario->token
+            'token' => $usuario->token,
+            'nombre' => $usuario->nombre
         ]);
     }
 }
