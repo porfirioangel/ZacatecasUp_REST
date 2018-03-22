@@ -81,9 +81,9 @@ class NegocioController extends Controller
                 'fecha_fin_suscripcion' => null,
                 'tipo_suscripcion' => null,
                 'galeria' => [
-                    sha1('galeria_' . $negocio->id . '_1'),
-                    sha1('galeria_' . $negocio->id . '_2'),
-                    sha1('galeria_' . $negocio->id . '_3')
+                    sha1('/uploads/galeria_' . $negocio->id . '_1'),
+                    sha1('/uploads/galeria_' . $negocio->id . '_2'),
+                    sha1('/uploads/galeria_' . $negocio->id . '_3')
                 ]
             ]);
         } catch (\Exception $e) {
